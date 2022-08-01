@@ -7,7 +7,7 @@ require("core/options")
 require("core/colors")
 require("core/autocmd")
 
-
+require("user/neogit")
 -- require('core/keymaps')
 
 -- require("plugins/neoformat")
