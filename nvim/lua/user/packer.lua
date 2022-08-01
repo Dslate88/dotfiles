@@ -7,7 +7,7 @@
 --   augroup fmt
 --      autocmd!
 --     autocmd BufWritePre * undojoin | Neoformat
---   augroup end 
+--   augroup end
 -- ]])
 
 return require("packer").startup(function(use)
@@ -15,13 +15,15 @@ return require("packer").startup(function(use)
     use "sbdchd/neoformat"
 
     -- Simple plugins can be specified as strings
-    use "TimUntersberger/neogit"
+    use {"TimUntersberger/neogit",
+        requires={"nvim-lua/plenary.nvim"}
+	}
 
     -- TJ created lodash of neovim
     use "nvim-lua/plenary.nvim"
     use "nvim-lua/popup.nvim"
-    use {"nvim-telescope/telescope.nvim", 
-        tag = "0.1.0", 
+    use {"nvim-telescope/telescope.nvim",
+        tag = "0.1.0",
         requires = {
             { "nvim-lua/plenary.nvim"},
             {"BurntSushi/ripgrep"}
@@ -52,7 +54,7 @@ return require("packer").startup(function(use)
     use "folke/tokyonight.nvim"
 
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
-    
+
 
     use "nvim-treesitter/playground"
     use "romgrk/nvim-treesitter-context"
