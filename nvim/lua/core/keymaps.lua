@@ -27,7 +27,8 @@ map('', '<right>', '<nop>')
 -----------------------------------------------------------
 -- lspconfig shortcuts
 -----------------------------------------------------------
-
+map("n", "<leader>e", ":lua vim.diagnostic.open_float()<cr>")
+map("n", "<leader>K", ":lua vim.lsp.buf.hover()<cr>")
 -----------------------------------------------------------
 -- harpoon shortcuts
 -----------------------------------------------------------
@@ -44,8 +45,9 @@ map("n", "<leader>fg", ":Telescope live_grep<cr>")
 --the send to terminal command will be great for rapid testing of code `gottoTerminal`
 
 -----------------------------------------------------------
---
+--tagbar shortcuts
 -----------------------------------------------------------
+map("n", "<leader>f8", ":TagbarToggle<cr>")
 
 -----------------------------------------------------------
 --
