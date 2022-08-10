@@ -1,4 +1,4 @@
-vim.cmd("set termguicolors")
+-- vim.cmd("set termguicolors")
 
 
 require("user/packer")
