@@ -15,3 +15,4 @@ require("user/lsp")
 --require("user/neoformat")--see bugs in lua file
 require("user/cmp")
 require("user/mason")
+require("user/comment")

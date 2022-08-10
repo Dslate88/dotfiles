@@ -18,12 +18,16 @@ return require("packer").startup(function(use)
             {"BurntSushi/ripgrep"}
         }
     }
+    -- randos
     use "sbdchd/neoformat"
     use "ThePrimeagen/harpoon"
-    use "morhetz/gruvbox"
-    use "folke/tokyonight.nvim"
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
     use "preservim/tagbar"
+    use "numToStr/Comment.nvim"
+
+    -- color schemes
+    use "morhetz/gruvbox"
+    use "folke/tokyonight.nvim"
 
     -- lsp
     use "neovim/nvim-lspconfig"
