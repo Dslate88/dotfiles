@@ -72,7 +72,14 @@
   }
 
   require('lspconfig')['sumneko_lua'].setup {
-    capabilities = capabilities
+    capabilities = capabilities,
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = {"vim"},
+            },
+        },
+    },
   }
 
 
