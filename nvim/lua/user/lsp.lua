@@ -1,1 +1,3 @@
-require "lspconfig".pyright.setup{}
+--require "lspconfig".pyright.setup{}
+--require "lspconfig".terraformls.setup{}
+--require "lspconfig".jsonls.setup{}
