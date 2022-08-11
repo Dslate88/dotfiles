@@ -52,5 +52,5 @@ map("n", "<leader>ft", ":Telescope treesitter<cr>")
 -----------------------------------------------------------
 --tagbar shortcuts
 -----------------------------------------------------------
-map("n", "<leader>f8", ":TagbarToggle<cr>")
+map("n", "<leader>tb", ":TagbarToggle<cr>")
 

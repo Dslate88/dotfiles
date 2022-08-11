@@ -22,7 +22,7 @@ return require("packer").startup(function(use)
     use "sbdchd/neoformat"
     use "ThePrimeagen/harpoon"
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
-    use "preservim/tagbar"
+    use "preservim/tagbar"  -- brew install universal-ctags
     use "numToStr/Comment.nvim"
     use {"nvim-lualine/lualine.nvim",
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
