@@ -17,3 +17,5 @@ require("user/cmp")
 require("user/mason")
 require("user/comment")
 require("user/lualine")
+require("user/treesitter")
+
