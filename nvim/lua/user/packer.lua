@@ -24,6 +24,9 @@ return require("packer").startup(function(use)
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
     use "preservim/tagbar"
     use "numToStr/Comment.nvim"
+    use {"nvim-lualine/lualine.nvim",
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
 
     -- color schemes
     use "morhetz/gruvbox"
