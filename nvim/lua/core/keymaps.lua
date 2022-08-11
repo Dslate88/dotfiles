@@ -29,6 +29,7 @@ map('', '<right>', '<nop>')
 -----------------------------------------------------------
 map("n", "<leader>e", ":lua vim.diagnostic.open_float()<cr>")
 map("n", "<leader>K", ":lua vim.lsp.buf.hover()<cr>")
+
 -----------------------------------------------------------
 -- harpoon shortcuts
 -----------------------------------------------------------
@@ -40,9 +41,10 @@ map("n", "<leader>ha", ":lua require('harpoon.mark').add_file()<cr>")
 -----------------------------------------------------------
 map("n", "<leader>ff", ":Telescope find_files<cr>")
 map("n", "<leader>fg", ":Telescope live_grep<cr>")
---add leader ctrl [1/2/3/4/5] for quick access to needed files
---OR instead of that use the nav_next & nav_prev
---the send to terminal command will be great for rapid testing of code `gottoTerminal`
+map("n", "<leader>fb", ":Telescope buffers<cr>")
+map("n", "<leader>fh", ":Telescope help_tags<cr>")
+map("n", "<leader>fk", ":Telescope keymaps<cr>")
+map("n", "<leader>ft", ":Telescope treesitter<cr>")
 
 -----------------------------------------------------------
 --tagbar shortcuts
