@@ -36,6 +36,7 @@ return require("packer").startup(function(use)
     use "neovim/nvim-lspconfig"
     use "williamboman/mason.nvim" --lsp server installer
     use "williamboman/mason-lspconfig.nvim"
+    use "hashivim/vim-terraform"
 
     -- auto completion
     use "hrsh7th/cmp-nvim-lsp"
