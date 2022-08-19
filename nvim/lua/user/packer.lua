@@ -19,6 +19,12 @@ return require("packer").startup(function(use)
         }
     }
     -- randos
+    use {
+      "folke/which-key.nvim",
+      config = function()
+        require("which-key").setup {}
+      end
+    }
     use "sbdchd/neoformat"
     use "ThePrimeagen/harpoon"
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
