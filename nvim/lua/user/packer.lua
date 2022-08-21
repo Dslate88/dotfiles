@@ -19,12 +19,7 @@ return require("packer").startup(function(use)
         }
     }
     -- randos
-    use {
-      "folke/which-key.nvim",
-      config = function()
-        require("which-key").setup {}
-      end
-    }
+    use { "folke/which-key.nvim" }
     use "sbdchd/neoformat"
     use "ThePrimeagen/harpoon"
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
@@ -38,6 +33,7 @@ return require("packer").startup(function(use)
     use "vimwiki/vimwiki" --pip3 install tasklib
     use "tools-life/taskwiki" --pip3 install pip3 install pynvim
     use "preservim/vim-markdown" --pip3 install pynvim
+    -- use "blindFS/vim-taskwarrior"
 
     -- color schemes
     use "morhetz/gruvbox"

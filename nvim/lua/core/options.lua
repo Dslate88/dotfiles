@@ -41,4 +41,3 @@ vim.opt.colorcolumn = "80"
 
 -- first key that initiates keymap listener
 vim.g.mapleader = " "
-
