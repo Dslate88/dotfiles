@@ -10,15 +10,14 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
--- Change leader to a space
--- vim.g.mapleader = ' '
-
 -- Disable arrow keys
 map("", "<up>", "<nop>")
 map('', '<down>', '<nop>')
 map('', '<left>', '<nop>')
 map('', '<right>', '<nop>')
 
+-- Yank full path of active file
+map("n", "<leader>yp", ":let @\" = expand('%:p')<cr>")
 -----------------------------------------------------------
 -- Neovim shortcuts
 -----------------------------------------------------------
