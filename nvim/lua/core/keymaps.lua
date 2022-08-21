@@ -11,7 +11,7 @@ local function map(mode, lhs, rhs, opts)
 end
 
 -- Change leader to a space
-vim.g.mapleader = ' '
+-- vim.g.mapleader = ' '
 
 -- Disable arrow keys
 map("", "<up>", "<nop>")
