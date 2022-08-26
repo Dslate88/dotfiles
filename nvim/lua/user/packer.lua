@@ -29,12 +29,6 @@ return require("packer").startup(function(use)
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
 
-    -- notes, taskwarrior, with markdown
-    use "vimwiki/vimwiki" --pip3 install tasklib
-    use "tools-life/taskwiki" --pip3 install pip3 install pynvim
-    use "preservim/vim-markdown" --pip3 install pynvim
-    -- use "blindFS/vim-taskwarrior"
-
     -- color schemes
     use "morhetz/gruvbox"
     use "folke/tokyonight.nvim"
