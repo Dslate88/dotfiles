@@ -10,6 +10,14 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+-- TESTING
+-- TESTING
+-- ESTING
+-- TESTING
+-- TESTING
+-- TESTING
+-- TESTING
+
 -- Disable arrow keys
 map("", "<up>", "<nop>")
 map('', '<down>', '<nop>')
@@ -19,10 +27,10 @@ map('', '<right>', '<nop>')
 -- Yank full path of active file
 map("n", "<leader>yp", ":let @\" = expand('%:p')<cr>")
 
------------------------------------------------------------
--- Neovim shortcuts
------------------------------------------------------------
+map("n", "<leader>w", ":w<cr>")
 
+-- under cursor find/replace all matching (for when ciw wont do)
+map("n", "<leader>*r", ":%s/\\<<c-r><c-w>\\>//g<left><left>")
 
 -----------------------------------------------------------
 -- neogit
