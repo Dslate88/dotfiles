@@ -10,27 +10,41 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
--- TESTING
--- TESTING
--- ESTING
--- TESTING
--- TESTING
--- TESTING
--- TESTING
+-- templates
+-- map("", "<leader>listen", "action")
 
--- Disable arrow keys
+
+-- disable arrow keys
 map("", "<up>", "<nop>")
 map('', '<down>', '<nop>')
 map('', '<left>', '<nop>')
 map('', '<right>', '<nop>')
-
--- Yank full path of active file
-map("n", "<leader>yp", ":let @\" = expand('%:p')<cr>")
-
+map("n", "<leader>yp", ":let @\" = expand('%:p')<cr>") -- Yank full path of active buffer
+map("n", "<leader>*r", ":%s/\\<<c-r><c-w>\\>//g<left><left>") -- cursor find/replace all
 map("n", "<leader>w", ":w<cr>")
+map("n", "<leader>q", ":q!<cr>")
+map("n", "<leader>so", ":so %<cr>")
 
--- under cursor find/replace all matching (for when ciw wont do)
-map("n", "<leader>*r", ":%s/\\<<c-r><c-w>\\>//g<left><left>")
+-- move lines efficiently
+map("n", "<leader>k", ":m-2<cr>==")
+map("n", "<leader>j", ":m+<cr>==")
+map("v", "<leader>k", ":m-2<cr>gv=gv")
+map("v", "<leader>j", ":m'>+<cr>gv=gv")
+
+-- buffers
+map("n", "<leader>B", ":enew<cr>") -- new
+map("n", "<leader>bq", ":bp <bar> bd! #<cr>") -- close active
+map("n", "<leader>ba", ":bufdo bd!<cr>") -- close all
+
+map("n", "<leader><Tab>", ":bnext<cr>") -- next
+map("n", "<leader><S-Tab>", ":bprevious<cr>") -- prev
+map("n", "<leader><leader>", "<c-^>") -- cycle last 2
+
+
+-- autoclose tags (NOT WORKING, NEED
+-- https://github.com/nanotee/nvim-lua-guide pattern for inoremap found here
+-- map("n", "[", "[]<Left>", { inoremap = true, silent = true }) --
+
 
 -----------------------------------------------------------
 -- neogit
