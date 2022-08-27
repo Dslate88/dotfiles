@@ -40,6 +40,10 @@ map("n", "<leader><Tab>", ":bnext<cr>") -- next
 map("n", "<leader><S-Tab>", ":bprevious<cr>") -- prev
 map("n", "<leader><leader>", "<c-^>") -- cycle last 2
 
+-- explorers
+map("n", "<leader>er", ":Rexplore<cr>") -- netrw
+map("n", "<leader>el", ":Lexplore<cr>") -- netrw
+map("n", "<leader>ev", ":Vexplore<cr>") -- netrw
 
 -- autoclose tags (NOT WORKING, NEED
 -- https://github.com/nanotee/nvim-lua-guide pattern for inoremap found here
