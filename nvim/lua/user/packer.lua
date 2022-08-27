@@ -8,9 +8,13 @@
 return require("packer").startup(function(use)
     use "wbthomason/packer.nvim"
 
+    -- neogit
     use {"TimUntersberger/neogit",
-        requires={"nvim-lua/plenary.nvim"}
+        requires={"nvim-lua/plenary.nvim"},
+        {'sindrets/diffview.nvim'}
 	}
+
+    -- fuzzy
     use {"nvim-telescope/telescope.nvim",
         tag = "0.1.0",
         requires = {

@@ -3,3 +3,4 @@ nvim/.DS_Store
 nvim/terraform.tf
 nvim/python.py
 nvim/plugin/packer_compiled.lua
+nvim/after/
