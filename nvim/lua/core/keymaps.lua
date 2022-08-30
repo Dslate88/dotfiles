@@ -49,6 +49,10 @@ map("n", "<leader>ev", ":Vexplore<cr>") -- netrw
 -- https://github.com/nanotee/nvim-lua-guide pattern for inoremap found here
 -- map("n", "[", "[]<Left>", { inoremap = true, silent = true }) --
 
+-----------------------------------------------------------
+-- vimwiki
+-----------------------------------------------------------
+map("n", "<leader>wf", ":set filetype=markdown<cr>")
 
 -----------------------------------------------------------
 -- neogit

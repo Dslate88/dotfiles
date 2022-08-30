@@ -8,6 +8,7 @@ function M.auto_commands()
         let wiki_1.path = '~/Documents/vimwiki/'
         let wiki_1.nested_syntaxes = {'python': 'python'}
         let wiki_1.syntax = 'markdown'
+        let wiki_1.ext2syntax = {'.wiki': 'markdown'}
         let wiki_1.ext = '.md'
         let g:vimwiki_list = [wiki_1]
         let g:vimwiki_markdown_link_ext = 1
