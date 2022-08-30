@@ -50,9 +50,10 @@ map("n", "<leader>ev", ":Vexplore<cr>") -- netrw
 -- map("n", "[", "[]<Left>", { inoremap = true, silent = true }) --
 
 -----------------------------------------------------------
--- vimwiki
+-- vimwiki / markdown
 -----------------------------------------------------------
-map("n", "<leader>wf", ":set filetype=markdown<cr>")
+map("n", "<leader>wf", ":set filetype=markdown<cr>") -- hacky but needed for now
+map("n", "<leader>wp", ":MarkdownPreviewToggle<cr>") -- hacky but needed for now
 
 -----------------------------------------------------------
 -- neogit
