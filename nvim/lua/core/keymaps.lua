@@ -55,6 +55,7 @@ map("n", "<leader>ev", ":Vexplore<cr>") -- netrw
 -----------------------------------------------------------
 map("n", "<leader>wf", ":set filetype=markdown<cr>") -- hacky but needed for now
 map("n", "<leader>wp", ":MarkdownPreviewToggle<cr>") -- hacky but needed for now
+map("n", "<leader>wx", ":VimwikiIndex<cr>") -- hacky but needed for now
 
 -----------------------------------------------------------
 -- neogit
