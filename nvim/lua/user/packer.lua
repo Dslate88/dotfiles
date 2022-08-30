@@ -26,7 +26,7 @@ return require("packer").startup(function(use)
     use { "folke/which-key.nvim" }
     use "sbdchd/neoformat"
     use "ThePrimeagen/harpoon"
-    use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
+
     use "preservim/tagbar"  -- brew install universal-ctags
     use "numToStr/Comment.nvim"
     use {"nvim-lualine/lualine.nvim",
@@ -36,6 +36,7 @@ return require("packer").startup(function(use)
         run = "cd app && npm install",
         ft = { "markdown" }
     }
+    use "vimwiki/vimwiki"
 
     -- color schemes
     use "morhetz/gruvbox"
@@ -46,6 +47,7 @@ return require("packer").startup(function(use)
     use "williamboman/mason.nvim" --lsp server installer
     use "williamboman/mason-lspconfig.nvim"
     use "hashivim/vim-terraform"
+    use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
 
     -- auto completion
     use "hrsh7th/cmp-nvim-lsp"
