@@ -23,8 +23,10 @@ map('', '<right>', '<nop>')
 map("n", "<leader>yp", ":let @\" = expand('%:p')<cr>") -- Yank full path of active buffer
 map("n", "<leader>*r", ":%s/\\<<c-r><c-w>\\>//g<left><left>") -- cursor find/replace all
 map("n", "<leader>w", ":w<cr>")
-map("n", "<leader>q", ":q!<cr>")
+map("n", "<leader>Q", ":q!<cr>")
+map("n", "<leader>qq", ":wq<cr>")
 map("n", "<leader>so", ":so %<cr>")
+map('n', '<Leader>cd', ':lcd %:p:h<CR>:pwd<CR>')
 
 -- move lines efficiently
 map("n", "<leader>k", ":m-2<cr>==")
@@ -45,6 +47,9 @@ map("n", "<leader><leader>", "<c-^>") -- cycle last 2
 map("n", "<leader>er", ":Rexplore<cr>") -- netrw
 map("n", "<leader>el", ":Lexplore<cr>") -- netrw
 map("n", "<leader>ev", ":Vexplore<cr>") -- netrw
+
+-- tabs
+map("n", "<leader>tn", ":tabnew<cr>") -- netrw
 
 -- autoclose tags (NOT WORKING, NEED
 -- https://github.com/nanotee/nvim-lua-guide pattern for inoremap found here
