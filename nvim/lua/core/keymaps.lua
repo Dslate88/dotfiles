@@ -55,6 +55,7 @@ map("n", "<leader>wj", "<C-W><C-J>", { noremap = false, silent = true })
 map("n", "<leader>wk", "<C-W><C-K>", { noremap = false, silent = true })
 map("n", "<leader>wl", "<C-W><C-L>", { noremap = false, silent = true })
 map("n", "<leader>wh", "<C-W><C-H>", { noremap = false, silent = true })
+map("n", "<leader>wc", ":close<cr>", { noremap = false, silent = true })
 
 -----------------------------------------------------------
 -- vimwiki / markdown
