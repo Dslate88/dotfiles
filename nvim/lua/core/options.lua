@@ -41,3 +41,8 @@ vim.opt.colorcolumn = "80"
 
 -- first key that initiates keymap listener
 vim.g.mapleader = " "
+
+vim.g.netrw_keepdir = 0
+vim.g.netrw_winsize = 30
+vim.g.netrw_banner = 0
+vim.g.netrw_localcopydircmd = "cp -r"
