@@ -47,7 +47,7 @@ map("n", "<leader><leader>", "<c-^>") -- cycle last 2
 -- explorers/windows/tabs
 map("n", "<leader>er", ":Rexplore<cr>")
 map("n", "<leader>el", ":Lexplore<cr>")
-map("n", "<leader>ev", ":Vexplore<cr>")
+map("n", "<leader>ea", ":Lexplore %:p:h<cr>")
 map("n", "<leader>tn", ":tabnew<cr>")
 map("n", "<leader>ws", "<C-W><C-S>", { noremap = false, silent = true })
 map("n", "<leader>wv", "<C-W><C-V>", { noremap = false, silent = true })
