@@ -28,6 +28,8 @@ map("n", "<leader>Q", ":q!<cr>")
 map("n", "<leader>qq", ":wq<cr>")
 map("n", "<leader>so", ":so %<cr>")
 map('n', '<Leader>cd', ':lcd %:p:h<CR>:pwd<CR>')
+map("n", "<S-j>", "<C-f>")
+map("n", "<S-k>", "<C-b>")
 
 -- move lines efficiently
 map("n", "<leader>k", ":m-2<cr>==")
