@@ -72,6 +72,7 @@ map("n", "<Leader>,wx", "<Plug>VimwikiMakeDiaryNote", { noremap = false, silent 
 map("n", "<Leader>,wt", "<Plug>VimwikiTabMakeDiaryNote", { noremap = false, silent = true })
 map("n", "<Leader>,wy", "<Plug>VimwikiMakeYesterdayDiaryNote", { noremap = false, silent = true })
 map("n", "<Leader>,wm", "<Plug>VimwikiMakeTomorrowDiaryNote", { noremap = false, silent = true })
+map("n", "<Leader>,wh", "<Plug>Vimwiki2HTML", { noremap = false, silent = true })
 
 -----------------------------------------------------------
 -- neogit
