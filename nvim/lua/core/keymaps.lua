@@ -46,7 +46,10 @@ map("n", "<leader><Tab>", ":bnext<cr>") -- next
 map("n", "<leader><S-Tab>", ":bprevious<cr>") -- prev
 map("n", "<leader><leader>", "<c-^>") -- cycle last 2
 
+-----------------------------------------------------------
 -- explorers/windows/tabs
+-----------------------------------------------------------
+map("n", "<leader>ep", ":Explore<cr>")
 map("n", "<leader>er", ":Rexplore<cr>")
 map("n", "<leader>el", ":Lexplore<cr>")
 map("n", "<leader>ea", ":Lexplore %:p:h<cr>")
