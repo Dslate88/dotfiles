@@ -66,6 +66,13 @@ map("n", "<leader>wl", "<C-W><C-L>", { noremap = false, silent = true })
 map("n", "<leader>wh", "<C-W><C-H>", { noremap = false, silent = true })
 map("n", "<leader>wc", ":close<cr>", { noremap = false, silent = true })
 
+
+-----------------------------------------------------------
+-- netrw
+-----------------------------------------------------------
+map("n", "<buffer><tab>","mf", { noremap = true, silent = true })
+
+
 -----------------------------------------------------------
 -- vimwiki / markdown
 -----------------------------------------------------------
