@@ -55,11 +55,14 @@ return require("packer").startup(function(use)
     use "hrsh7th/cmp-path"
     use "hrsh7th/cmp-cmdline"
     use { "hrsh7th/nvim-cmp",
-        requires = { "hrsh7th/vim-vsnip" }
+        requires = {
+            { "hrsh7th/vim-vsnip" },
+            { "hrsh7th/vim-vsnip-integ" },
+        }
     }
 
     -- snippets
-    use "L3MON4D3/LuaSnip"
+    -- use "L3MON4D3/LuaSnip"
     -- use "rafamadriz/friendly-snippets"
 
 end)
