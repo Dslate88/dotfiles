@@ -31,13 +31,17 @@ map('n', '<Leader>cd', ':lcd %:p:h<CR>:pwd<CR>')
 map("n", "<S-j>", "<C-f>")
 map("n", "<S-k>", "<C-b>")
 
+-----------------------------------------------------------
 -- move lines efficiently
+-----------------------------------------------------------
 map("n", "<leader>k", ":m-2<cr>==")
 map("n", "<leader>j", ":m+<cr>==")
 map("v", "<leader>k", ":m-2<cr>gv=gv")
 map("v", "<leader>j", ":m'>+<cr>gv=gv")
 
+-----------------------------------------------------------
 -- buffers
+-----------------------------------------------------------
 map("n", "<leader>B", ":enew<cr>") -- new
 map("n", "<leader>bq", ":bp <bar> bd! #<cr>") -- close active
 map("n", "<leader>ba", ":bufdo bd!<cr>") -- close all
