@@ -109,7 +109,6 @@ map("n", "<leader>fg", ":Telescope live_grep<cr>")
 map("n", "<leader>fb", ":Telescope buffers<cr>")
 map("n", "<leader>fh", ":Telescope help_tags<cr>")
 map("n", "<leader>fk", ":Telescope keymaps<cr>")
-map("n", "<leader>ft", ":Telescope treesitter<cr>")
 
 -----------------------------------------------------------
 --tagbar shortcuts
