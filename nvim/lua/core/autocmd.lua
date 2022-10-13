@@ -46,6 +46,18 @@ vim.cmd [[
 
       nmap <buffer> L <CR>:Lexplore<CR>
       nmap <buffer> <Leader>dd :Lexplore<CR>
+
+      nmap <buffer> <TAB> mf
+      nmap <buffer> <S-TAB> mF
+      nmap <buffer> <Leader><TAB> mu
+
+      nmap <buffer> ff %:w<CR>:buffer #<CR>
+      nmap <buffer> fe R
+      nmap <buffer> fc mc
+      nmap <buffer> fC mtmc
+      nmap <buffer> fx mm
+      nmap <buffer> fX mtmm
+      nmap <buffer> f; mx
     endfunction
 
 ]]
