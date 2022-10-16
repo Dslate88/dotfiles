@@ -62,7 +62,9 @@ return require("packer").startup(function(use)
     }
 
     -- terminal float
-    use 'voldikss/vim-floaterm'
+    use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+      require("toggleterm").setup()
+    end}
 
     -- snippets
     use "rafamadriz/friendly-snippets"
