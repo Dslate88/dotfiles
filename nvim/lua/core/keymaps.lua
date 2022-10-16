@@ -75,6 +75,7 @@ map("n", "<leader>ta", ":ToggleTermToggleAll<cr>")
 map("n", "<leader>tw", ":TermExec direction=vertical size=90 cmd=\"task\"<cr>")
 map("n", "<leader>tg", ":2TermExec direction=vertical size=90 cmd=\"source ~/.bash_profile\"<cr>")
 map("n", "<leader>tl", ":3TermExec direction=horizontal size=10 cmd=\"source ~/.bash_profile\"<cr>")
+map("v", "<leader>ts", ":ToggleTermSendVisualLines<cr>")
 
 
 -----------------------------------------------------------
