@@ -61,8 +61,10 @@ return require("packer").startup(function(use)
         }
     }
 
+    -- terminal float
+    use 'voldikss/vim-floaterm'
+
     -- snippets
-    -- use "L3MON4D3/LuaSnip"
-    -- use "rafamadriz/friendly-snippets"
+    use "rafamadriz/friendly-snippets"
 
 end)

@@ -34,7 +34,7 @@ local cmp = require'cmp'
       elseif has_words_before() then
         cmp.complete()
       else
-        fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+        fallback()
       end
       end, { "i", "s" }),
 
