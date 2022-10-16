@@ -72,7 +72,9 @@ map("n", "<leader>wc", ":close<cr>", { noremap = false, silent = true })
 map("t", "<Esc>", "<C-\\><C-n>")
 map("n", "<leader>tt", ":ToggleTerm<cr>")
 map("n", "<leader>ta", ":ToggleTermToggleAll<cr>")
-map("n", "<leader>tw", ":1TermExec direction=vertical size=90 cmd=\"task\"<cr>")
+map("n", "<leader>tw", ":TermExec direction=vertical size=90 cmd=\"task\"<cr>")
+map("n", "<leader>tg", ":2TermExec direction=vertical size=90 cmd=\"source ~/.bash_profile\"<cr>")
+map("n", "<leader>tl", ":3TermExec direction=horizontal size=10 cmd=\"source ~/.bash_profile\"<cr>")
 
 
 -----------------------------------------------------------
