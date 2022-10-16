@@ -71,6 +71,7 @@ map("n", "<leader>wc", ":close<cr>", { noremap = false, silent = true })
 -----------------------------------------------------------
 map("t", "<Esc>", "<C-\\><C-n>")
 map("n", "<leader>tt", ":ToggleTerm<cr>")
+map("n", "<leader>ta", ":ToggleTermToggleAll<cr>")
 
 
 
