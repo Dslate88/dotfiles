@@ -66,6 +66,10 @@ map("n", "<leader>wl", "<C-W><C-L>", { noremap = false, silent = true })
 map("n", "<leader>wh", "<C-W><C-H>", { noremap = false, silent = true })
 map("n", "<leader>wc", ":close<cr>", { noremap = false, silent = true })
 
+-----------------------------------------------------------
+-- toggle term
+-----------------------------------------------------------
+map("t", "<Esc>", "<C-\\><C-n>")
 
 -----------------------------------------------------------
 -- netrw
