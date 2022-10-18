@@ -12,10 +12,9 @@ alias gitd="git diff"
 alias gitcm="git commit -m "
 alias gita="git add "
 
-# taskwarrior
-alias ta="task add "
-alias td="task done "
-alias tm="task modify "
+# terraform
+alias ta="terraform apply"
+alias tp="terraform plan"
 
 # terminal stuff
 export TERM="xterm-256color"
