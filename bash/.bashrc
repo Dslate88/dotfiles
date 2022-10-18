@@ -16,6 +16,10 @@ alias gita="git add "
 alias ta="terraform apply"
 alias tp="terraform plan"
 
+# taskwarrior
+alias wl="task ls"
+alias wa="task active"
+
 # terminal stuff
 export TERM="xterm-256color"
 PS1='\[\e[0;33m\]\u\[\e[0m\]@\[\e[0;32m\]\h\[\e[0m\]:\[\e[0;34m\]\w\[\e[0m\]\$ '
