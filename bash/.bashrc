@@ -30,7 +30,7 @@ source $(brew --prefix nvm)/nvm.sh
 # vim stuff
 set -o vi
 alias sbp="source ~/.bash_profile"
-alias vbp="vim ~/.bash_profile"
+alias vbp="vim ~/github/.dotfiles/bash/.bashrc"
 alias vss="vim ~/OneDrive/Documents/screen_shots/."
 alias vim="nvim"
 alias vkm="vim ~/github/.dotfiles/nvim/lua/core/keymaps.lua"
