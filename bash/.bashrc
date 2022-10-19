@@ -14,6 +14,7 @@ alias gita="git add "
 
 # terraform
 alias ta="terraform apply"
+alias tf="terraform"
 alias tp="terraform plan"
 alias td="terraform destroy"
 
