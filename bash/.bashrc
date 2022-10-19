@@ -18,8 +18,8 @@ alias tp="terraform plan"
 alias td="terraform destroy"
 
 # taskwarrior
-alias wl="task ls"
-alias wa="task active"
+alias wl="clear && task ls"
+alias wa="clear && task active"
 
 # terminal
 export TERM="xterm-256color"
