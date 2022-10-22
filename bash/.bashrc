@@ -46,6 +46,6 @@ alias v="nvim ."
 alias adi="
 aws ec2 describe-instances \
     --filters Name=instance-state-name,Values=running \
-    --query 'Reservations[*].Instances[*}.{Instance:InstanceId,Name:Tags[?Key==\'Name\']|[0].Value,PriIp:PrivateIpAddress,PubDns:PublicDnsAddress,key:KeyName}' \
+    --query 'Reservations[*].Instances[*].{Instance:InstanceId,Name:Tags[?Key==\`Name\`]|[0].Value,PriIp:PrivateIpAddress,PubDns:PublicDnsName,key:KeyName}' \
     --output table
 "
