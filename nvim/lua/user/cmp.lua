@@ -92,7 +92,7 @@ local cmp = require'cmp'
     capabilities = capabilities
   }
 
-  require('lspconfig')['html_install'].setup {
+  require('lspconfig')['html'].setup {
     capabilities = capabilities
   }
 
