@@ -92,6 +92,10 @@ local cmp = require'cmp'
     capabilities = capabilities
   }
 
+  require('lspconfig')['html_install'].setup {
+    capabilities = capabilities
+  }
+
   require('lspconfig')['sumneko_lua'].setup {
     capabilities = capabilities,
     settings = {
