@@ -24,7 +24,7 @@ alias wa="clear && task active"
 
 # terminal
 export TERM="xterm-256color"
-PS1='\[\e[0;33m\]\u\[\e[0m\]@\[\e[0;32m\]\h\[\e[0m\]:\[\e[0;34m\]\w\[\e[0m\]\$ '
+PS1='\[\e[0;33m\]\u\[\e[0m\]@\[\e[0;32m\]\h\[\e[0m\]:\[\e[0;34m\]\w\[\e[0m\]\n\$ '
 
 # homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
