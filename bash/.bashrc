@@ -39,7 +39,7 @@ alias sbp="source ~/.bash_profile"
 alias vbp="vim ~/github/.dotfiles/bash/.bashrc"
 alias vss="vim ~/OneDrive/Documents/screen_shots/."
 alias vim="nvim"
-alias vkm="vim ~/github/.dotfiles/nvim/lua/core/keymaps.lua"
+alias vdf="vim ~/github/.dotfiles/"
 alias v="nvim ."
 
 # aws
