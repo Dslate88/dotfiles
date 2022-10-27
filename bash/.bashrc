@@ -19,12 +19,13 @@ alias tp="terraform plan"
 alias td="terraform destroy"
 
 # taskwarrior
+alias wt="clear && task"
 alias wl="clear && task ls"
 alias wa="clear && task active"
 
 # terminal
 export TERM="xterm-256color"
-PS1='\[\e[0;33m\]\u\[\e[0m\]@\[\e[0;32m\]\h\[\e[0m\]:\[\e[0;34m\]\w\[\e[0m\]\n\$ '
+export PS1='\n\n\[\e[0;33m\]\u\[\e[0m\]\[\e[0m\]:\[\e[0;34m\]\w\[\e[0m\]\n$ '
 
 # homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
