@@ -20,7 +20,6 @@ map('', '<down>', '<nop>')
 map('', '<left>', '<nop>')
 map('', '<right>', '<nop>')
 
-map("n", "<leader>ys", ":let @\"=system('source functions.sh; getss ' . @a)<cr>")
 map("n", "<leader>yp", ":let @\" = expand('%:p')<cr>") -- Yank full path of active buffer
 map("n", "<leader>*r", ":%s/\\<<c-r><c-w>\\>//g<left><left>") -- cursor find/replace all
 map("n", "<leader>ww", ":w<cr>")
