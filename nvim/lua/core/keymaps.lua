@@ -26,7 +26,7 @@ map("n", "<leader>ww", ":w<cr>")
 map("n", "<leader>Q", ":q!<cr>")
 map("n", "<leader>qq", ":wq<cr>")
 map("n", "<leader>so", ":so %<cr>")
-map('n', '<Leader>cd', ':lcd %:p:h<CR>:pwd<CR>')
+map('n', '<Leader>cd', ':lcd %:p:h<CR>:pwd<CR>') -- set wd to active buffer
 map("n", "<S-j>", "<C-f>")
 map("n", "<S-k>", "<C-b>")
 
@@ -68,10 +68,10 @@ map("n", "<leader>wc", ":close<cr>", { noremap = false, silent = true })
 -----------------------------------------------------------
 -- toggle term
 -----------------------------------------------------------
-map("t", "<Esc>", "<C-\\><C-n>")
+map("t", "<Esc>", "<C-\\><C-n>") -- enable escape key in terminal mode
 map("n", "<leader>tt", ":ToggleTerm<cr>")
 map("n", "<leader>ta", ":ToggleTermToggleAll<cr>")
-map("n", "<leader>tw", ":TermExec direction=vertical size=90 cmd=\"task ls\"<cr>")
+map("n", "<leader>tw", ":TermExec direction=vertical size=90 cmd=\"clear && task ls\"<cr>")
 map("n", "<leader>tg", ":2TermExec direction=vertical size=90 cmd=\"source ~/.bash_profile\"<cr>")
 map("n", "<leader>tl", ":3TermExec direction=horizontal size=10 cmd=\"source ~/.bash_profile\"<cr>")
 map("v", "<leader>ts", ":ToggleTermSendVisualLines<cr>")
