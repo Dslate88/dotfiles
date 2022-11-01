@@ -127,8 +127,3 @@ map("n", "<leader>fb", ":Telescope buffers<cr>")
 map("n", "<leader>fh", ":Telescope help_tags<cr>")
 map("n", "<leader>fk", ":Telescope keymaps<cr>")
 
------------------------------------------------------------
---tagbar shortcuts
------------------------------------------------------------
-map("n", "<leader>tb", ":TagbarToggle<cr>")
-

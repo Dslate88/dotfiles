@@ -27,7 +27,7 @@ return require("packer").startup(function(use)
     use "sbdchd/neoformat"
     use "ThePrimeagen/harpoon"
 
-    use "preservim/tagbar"  -- brew install universal-ctags
+    -- use "preservim/tagbar"  -- brew install universal-ctags
     use "numToStr/Comment.nvim"
     use {"nvim-lualine/lualine.nvim",
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
@@ -44,7 +44,7 @@ return require("packer").startup(function(use)
 
     -- lsp
     use "neovim/nvim-lspconfig"
-    use "williamboman/mason.nvim" --lsp server installer
+    use "williamboman/mason.nvim" -- an alternative language server installer
     use "williamboman/mason-lspconfig.nvim"
     use "hashivim/vim-terraform"
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
