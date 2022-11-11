@@ -123,3 +123,9 @@ map("n", "<leader>fb", ":Telescope buffers<cr>")
 map("n", "<leader>fh", ":Telescope help_tags<cr>")
 map("n", "<leader>fk", ":Telescope keymaps<cr>")
 
+-----------------------------------------------------------
+-- copilot
+-----------------------------------------------------------
+map("n", "<leader>cp", ":Copilot panel<cr>")
+map("n", "<leader>ce", ":Copilot enable<cr>")
+

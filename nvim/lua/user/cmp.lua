@@ -16,7 +16,6 @@ local cmp = require'cmp'
       end,
     },
     window = {
-      -- completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered(),
     },
     mapping = cmp.mapping.preset.insert({
@@ -27,15 +26,20 @@ local cmp = require'cmp'
       ['<CR>'] = cmp.mapping.confirm({ select = true }),
 
       ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif vim.fn["vsnip#available"](1) == 1 then
-        feedkey("<Plug>(vsnip-expand-or-jump)", "")
-      elseif has_words_before() then
-        cmp.complete()
-      else
-        fallback()
-      end
+          if cmp.visible() then
+            cmp.select_next_item()
+          elseif vim.fn["vsnip#available"](1) == 1 then
+            feedkey("<Plug>(vsnip-expand-or-jump)", "")
+          elseif has_words_before() then
+            cmp.complete()
+          else
+              local copilot_keys = vim.fn["copilot#Accept"]()
+              if copilot_keys ~= "" then
+                 vim.api.nvim_feedkeys(copilot_keys, "i", true)
+              else
+                 fallback()
+              end
+          end
       end, { "i", "s" }),
 
       ['<S-Tab>'] = cmp.mapping(function()

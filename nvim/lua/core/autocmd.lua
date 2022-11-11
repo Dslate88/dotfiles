@@ -26,6 +26,8 @@ autocmd('BufWritePre', {
   group = "formatting"
 })
 
+
+-- netrw auto group
 vim.cmd [[
 
     function! NetrwMapping()
