@@ -60,6 +60,7 @@ return require("packer").startup(function(use)
             { "hrsh7th/vim-vsnip-integ" },
         }
     }
+    use "github/copilot.vim"
 
     -- terminal float
     use {"akinsho/toggleterm.nvim", tag = '*', config = function()
