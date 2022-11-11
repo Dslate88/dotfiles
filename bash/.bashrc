@@ -2,9 +2,11 @@
 
 # general
 alias c="clear"
+alias la="ls -al"
+alias ll="ls -l"
 alias ls="ls -G"
-alias lsa="ls -all"
 alias cdg="cd ~/github"
+alias sa="source activate "
 
 # git
 alias gits="git status"
