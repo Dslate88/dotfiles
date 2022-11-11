@@ -6,10 +6,6 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
--- local fns = require('core.functions')
--- local command = vim.api.nvim_create_user_command
--- command('GetSS', fns.get_screenshot, {desc = 'Get selected text'})
-
 -----------------------------------------------------------
 -- general
 -----------------------------------------------------------
