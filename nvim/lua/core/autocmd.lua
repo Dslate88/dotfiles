@@ -14,11 +14,11 @@ autocmd('TextYankPost', {
 -- Apply neoformat on save
 -- local packer_grp = vim.api.nvim_create_augroup("formatting", { clear = true } )
 augroup("formatting", { clear = true })
-autocmd("BufWritePre * undojoin", {
-    pattern = "*",
-    command = "Neoformat",
-    group = "formatting"
-})
+-- autocmd("BufWritePre * undojoin", {
+--     pattern = "*",
+--     command = "Neoformat",
+--     group = "formatting"
+-- })
 
 autocmd('BufWritePre', {
   pattern = '*',

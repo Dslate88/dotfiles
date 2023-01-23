@@ -100,6 +100,11 @@ map("n", "<Leader>,wh", "<Plug>Vimwiki2HTML", { noremap = false, silent = true }
 map("n", "<leader>ng", ":Neogit<cr>")
 
 -----------------------------------------------------------
+-- neogit
+-----------------------------------------------------------
+map("n", "<leader>nf", ":Neoformat<cr>")
+
+-----------------------------------------------------------
 -- lspconfig shortcuts
 -----------------------------------------------------------
 map("n", "<leader>e", ":lua vim.diagnostic.open_float()<cr>")
