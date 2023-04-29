@@ -13,9 +13,10 @@
 
 ## install plugins for nvim with packer
 
-- run `nvim .`
+- run `nvim .` (using nvim version:v0.9.0)
 - run `:PackerInstall` <!-- This collects the gh repo specified in packer.lua and installs -->
 
 ## Packer.lua additional dependencies
 
 - brew install ripgrep (needed for Telescope)
+
