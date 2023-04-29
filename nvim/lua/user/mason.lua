@@ -5,7 +5,8 @@ require("mason-lspconfig").setup({
         "marksman",
         "lua_ls",
         "pyright",
-        "terraformls"
+        "terraformls",
+        "tflint"
     },
     automatic_installation = true,
 })
