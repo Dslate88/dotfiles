@@ -25,7 +25,9 @@ return require("packer").startup(function(use)
     -- randos
     use { "folke/which-key.nvim" }
     use "sbdchd/neoformat"
-    use "ThePrimeagen/harpoon"
+    use {"ThePrimeagen/harpoon",
+        requires={"nvim-lua/plenary.nvim"}
+	}
 
     -- use "preservim/tagbar"  -- brew install universal-ctags
     use "numToStr/Comment.nvim"
