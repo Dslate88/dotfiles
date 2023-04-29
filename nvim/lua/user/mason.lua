@@ -3,7 +3,7 @@ require("mason-lspconfig").setup({
     ensure_installed = {
         "jsonls",
         "marksman",
-        "lua-ls",
+        "lua_ls",
         "pyright",
         "terraformls"
     },
