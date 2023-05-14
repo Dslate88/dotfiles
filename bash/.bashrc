@@ -6,6 +6,7 @@ alias la="ls -al"
 alias ll="ls -l"
 alias ls="ls -G"
 alias cdg="cd ~/github"
+alias cd1="cd ~/github/tf-aws-django-website"
 alias sa="source activate "
 
 # git
@@ -19,6 +20,9 @@ alias ta="terraform apply"
 alias tf="terraform"
 alias tp="terraform plan"
 alias td="terraform destroy"
+
+# minikube
+alias kubectl="minikube kubectl --"
 
 # taskwarrior
 alias wt="clear && task"

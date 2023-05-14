@@ -100,7 +100,7 @@ map("n", "<Leader>,wh", "<Plug>Vimwiki2HTML", { noremap = false, silent = true }
 map("n", "<leader>ng", ":Neogit<cr>")
 
 -----------------------------------------------------------
--- neogit
+-- neoformat
 -----------------------------------------------------------
 map("n", "<leader>nf", ":Neoformat<cr>")
 
@@ -133,4 +133,6 @@ map("n", "<leader>fk", ":Telescope keymaps<cr>")
 -----------------------------------------------------------
 map("n", "<leader>cp", ":Copilot panel<cr>")
 map("n", "<leader>ce", ":Copilot enable<cr>")
+map("n", "<leader>cd", ":Copilot disable<cr>")
+
 
