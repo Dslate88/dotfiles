@@ -4,3 +4,6 @@ nvim/terraform.tf
 nvim/python.py
 nvim/plugin/packer_compiled.lua
 nvim/after/
+
+## TODO: rm symlink, stop tracking this so I can store sensitive info..
+bash/**
