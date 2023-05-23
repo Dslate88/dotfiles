@@ -160,11 +160,25 @@ map("n", "<leader>hp", ":lua require('harpoon.ui').nav_prev()<cr>")
 -----------------------------------------------------------
 -- telescope shortcuts
 -----------------------------------------------------------
-map("n", "<leader>ff", ":Telescope find_files<cr>")
-map("n", "<leader>fg", ":Telescope live_grep<cr>")
-map("n", "<leader>fb", ":Telescope buffers<cr>")
-map("n", "<leader>fh", ":Telescope help_tags<cr>")
-map("n", "<leader>fk", ":Telescope keymaps<cr>")
+
+local mappings = {
+    f = {
+        name = "+Telescope",
+        f = { "<cmd>Telescope find_files<cr>", "Find Files" },
+        g = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
+        b = { "<cmd>Telescope buffers<cr>", "Buffers" },
+        h = { "<cmd>Telescope help_tags<cr>", "Help Tags" },
+        k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
+        m = { "<cmd>Telescope marks<cr>", "Marks" },
+        o = { "<cmd>Telescope oldfiles<cr>", "Old Files" },
+        r = { "<cmd>Telescope registers<cr>", "Registers" },
+        s = { "<cmd>Telescope git_status<cr>", "Git Status" },
+        c = { "<cmd>Telescope commands<cr>", "Commands" },
+        p = { "<cmd>Telescope projects<cr>", "Projects" },
+    }
+}
+
+wk.register(mappings, { prefix = "<leader>" })
 
 -----------------------------------------------------------
 -- copilot
