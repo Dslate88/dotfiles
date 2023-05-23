@@ -100,15 +100,17 @@ wk.register({
 -----------------------------------------------------------
 -- toggle term
 -----------------------------------------------------------
-map("t", "<Esc>", "<C-\\><C-n>") -- enable escape key in terminal mode
-map("n", "<leader>tt", ":ToggleTerm<cr>")
-map("n", "<leader>ta", ":ToggleTermToggleAll<cr>")
-map("n", "<leader>tw", ":TermExec direction=vertical size=90 cmd=\"clear && task ls\"<cr>")
-map("n", "<leader>tg", ":2TermExec direction=vertical size=90 cmd=\"source ~/.bash_profile\"<cr>")
-map("n", "<leader>tl", ":3TermExec direction=horizontal size=10 cmd=\"source ~/.bash_profile\"<cr>")
-map("v", "<leader>ts", ":ToggleTermSendVisualLines<cr>")
 
+local tt_mappings = {
+    name = "+terminal", -- name to display in popup
+    t = { "<cmd>ToggleTerm<cr>", "Toggle Term" },
+    a = { "<cmd>ToggleTermToggleAll<cr>", "Toggle All Terms" },
+    n = { "<cmd>ToggleTerm direction=float<cr>", "New Floating Term" },
+    p = { "<cmd>ToggleTerm direction=horizontal<cr>", "New Horizontal Term" },
+    v = { "<cmd>ToggleTerm direction=vertical<cr>", "New Vertical Term" },
+}
 
+wk.register(tt_mappings, { prefix = "<leader>t" })
 -----------------------------------------------------------
 -- netrw
 -----------------------------------------------------------
