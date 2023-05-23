@@ -5,6 +5,7 @@ require("core/autocmd")
 require("core/keymaps")
 
 require("user/neogit")
+require("user/devicons") -- NOTE: must be ahead of telescope
 require("user/telescope") --needs live_grep config still
 require("user/lsp")
 require("user/neoformat")
