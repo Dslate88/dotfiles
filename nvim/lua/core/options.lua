@@ -37,7 +37,7 @@ vim.opt.updatetime = 50
 
 -- Don't pass messages to |ins-completion-menu|.
 vim.opt.shortmess:append("c")
-vim.opt.colorcolumn = "80"
+-- vim.opt.colorcolumn = "80" -- helpful to keep lines shorter than 80 characters
 
 -- first key that initiates keymap listener
 vim.g.mapleader = " "

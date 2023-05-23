@@ -1,5 +1,5 @@
-require("user/packer")
 require("core/options")
+require("user/packer")
 require("core/colors")
 require("core/autocmd")
 require("core/keymaps")

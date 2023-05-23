@@ -6,6 +6,7 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+
 -----------------------------------------------------------
 -- general
 -----------------------------------------------------------
@@ -130,9 +131,9 @@ map("n", "<leader>fk", ":Telescope keymaps<cr>")
 
 -----------------------------------------------------------
 -- copilot
+-- note: control + j is mapped in copilot.lua to accept the suggestion
 -----------------------------------------------------------
 map("n", "<leader>cp", ":Copilot panel<cr>")
 map("n", "<leader>ce", ":Copilot enable<cr>")
 map("n", "<leader>cd", ":Copilot disable<cr>")
-
 

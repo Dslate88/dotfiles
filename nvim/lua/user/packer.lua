@@ -8,11 +8,19 @@
 return require("packer").startup(function(use)
     use "wbthomason/packer.nvim"
 
-    -- neogit
+    -- git stuff
     use {"TimUntersberger/neogit",
         requires={"nvim-lua/plenary.nvim"},
         {'sindrets/diffview.nvim'}
 	}
+    use {"lewis6991/gitsigns.nvim",
+        config = function()
+            require("gitsigns").setup()
+        end,
+        requires = {
+            'nvim-lua/plenary.nvim'
+        }
+    }
 
     -- fuzzy
     use {"nvim-telescope/telescope.nvim",
