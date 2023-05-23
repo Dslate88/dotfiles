@@ -76,6 +76,27 @@ map("n", "<leader>wl", "<C-W><C-L>", { noremap = false, silent = true })
 map("n", "<leader>wh", "<C-W><C-H>", { noremap = false, silent = true })
 map("n", "<leader>wc", ":close<cr>", { noremap = false, silent = true })
 
+wk.register({
+    e = {
+        name = "+explorers",
+        p = {":Explore<cr>", "Explore"},
+        r = {":Rexplore<cr>", "Rexplore"},
+        l = {":Lexplore<cr>", "Lexplore"},
+        a = {":Lexplore %:p:h<cr>", "Lexplore Directory"},
+    },
+    t = {":tabnew<cr>", "New Tab"},
+    w = {
+        name = "+windows",
+        s = {":split<cr>", "Horizontal Split"},
+        v = {":vsplit<cr>", "Vertical Split"},
+        j = {":wincmd j<cr>", "Window Down"},
+        k = {":wincmd k<cr>", "Window Up"},
+        l = {":wincmd l<cr>", "Window Right"},
+        h = {":wincmd h<cr>", "Window Left"},
+        c = {":close<cr>", "Close Window"},
+    },
+}, { prefix = "<leader>"})
+
 -----------------------------------------------------------
 -- toggle term
 -----------------------------------------------------------
