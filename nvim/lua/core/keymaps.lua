@@ -1,3 +1,5 @@
+local wk = require("which-key")
+
 local function map(mode, lhs, rhs, opts)
   local options = { noremap = true, silent = true }
   if opts then
@@ -24,8 +26,8 @@ map("n", "<leader>Q", ":q!<cr>")
 map("n", "<leader>qq", ":wq<cr>")
 map("n", "<leader>so", ":so %<cr>")
 map('n', '<Leader>cd', ':lcd %:p:h<CR>:pwd<CR>') -- set wd to active buffer
-map("n", "<S-j>", "<C-f>")
-map("n", "<S-k>", "<C-b>")
+map("n", "<S-j>", "<C-f>") -- scroll down
+map("n", "<S-k>", "<C-b>") -- scroll up
 
 -----------------------------------------------------------
 -- move lines efficiently
@@ -38,13 +40,25 @@ map("v", "<leader>j", ":m'>+<cr>gv=gv")
 -----------------------------------------------------------
 -- buffers
 -----------------------------------------------------------
-map("n", "<leader>B", ":enew<cr>") -- new
-map("n", "<leader>bq", ":bp <bar> bd! #<cr>") -- close active
-map("n", "<leader>ba", ":bufdo bd!<cr>") -- close all
+map("n", "<leader>B", ":enew<cr>")
+map("n", "<leader>bq", ":bp <bar> bd! #<cr>")
+map("n", "<leader>ba", ":bufdo bd!<cr>")
 
-map("n", "<leader><Tab>", ":bnext<cr>") -- next
-map("n", "<leader><S-Tab>", ":bprevious<cr>") -- prev
-map("n", "<leader><leader>", "<c-^>") -- cycle last 2
+map("n", "<leader><Tab>", ":bnext<cr>")
+map("n", "<leader><S-Tab>", ":bprevious<cr>")
+map("n", "<leader><leader>", "<c-^>")
+
+wk.register({
+    b = {
+        name = "+buffers",
+        B = { ":enew<cr>", "New buffer" },
+        q = { ":bp <bar> bd! #<cr>", "Close active buffer" },
+        a = { ":bufdo bd!<cr>", "Close all buffers" },
+        ["<Tab>"] = { ":bnext<cr>", "Next buffer" },
+        ["<S-Tab>"] = { ":bprevious<cr>", "Previous buffer" },
+        ["<leader>"] = { "<c-^>", "Cycle last 2 buffers" },
+    },
+}, { prefix = "<leader>" })
 
 -----------------------------------------------------------
 -- explorers/windows/tabs
