@@ -7,12 +7,17 @@
 
 return require("packer").startup(function(use)
     use "wbthomason/packer.nvim"
+    -- use "nvim-tree/nvim-web-devicons"
 
     -- git stuff
-    use {"TimUntersberger/neogit",
+    use {"NeogitOrg/neogit",
         requires={"nvim-lua/plenary.nvim"},
         {'sindrets/diffview.nvim'}
 	}
+ --    use {"TimUntersberger/neogit",
+ --        requires={"nvim-lua/plenary.nvim"},
+ --        {'sindrets/diffview.nvim'}
+	-- }
     use {"lewis6991/gitsigns.nvim",
         config = function()
             require("gitsigns").setup()
@@ -24,10 +29,11 @@ return require("packer").startup(function(use)
 
     -- fuzzy
     use {"nvim-telescope/telescope.nvim",
-        tag = "0.1.0",
+        tag = "0.1.5",
         requires = {
             {"nvim-lua/plenary.nvim"},
-            {"BurntSushi/ripgrep"} --brew install ripgrep
+            {"BurntSushi/ripgrep"}, --brew install ripgrep
+            {"nvim-tree/nvim-web-devicons"}
         }
     }
     -- randos
@@ -36,7 +42,6 @@ return require("packer").startup(function(use)
     use {"ThePrimeagen/harpoon",
         requires={"nvim-lua/plenary.nvim"}
 	}
-    use {"kyazdani42/nvim-web-devicons"}
 
     -- use "preservim/tagbar"  -- brew install universal-ctags
     use "numToStr/Comment.nvim"
@@ -60,6 +65,7 @@ return require("packer").startup(function(use)
     use "hashivim/vim-terraform"
     use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
 
+
     -- auto completion
     use "hrsh7th/cmp-nvim-lsp"
     use "hrsh7th/cmp-buffer"
@@ -71,7 +77,19 @@ return require("packer").startup(function(use)
             { "hrsh7th/vim-vsnip-integ" },
         }
     }
-    use "github/copilot.vim"
+    -- use "github/copilot.vim"
+    use {
+      "jackMort/ChatGPT.nvim",
+        config = function()
+          require("user/gpt").setup()
+        end,
+        requires = {
+          "MunifTanjim/nui.nvim",
+          "nvim-lua/plenary.nvim",
+          "folke/trouble.nvim",
+          "nvim-telescope/telescope.nvim"
+        }
+    }
 
     -- terminal float
     use {"akinsho/toggleterm.nvim", tag = '*', config = function()

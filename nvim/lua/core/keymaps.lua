@@ -184,7 +184,7 @@ wk.register(mappings, { prefix = "<leader>" })
 -- copilot
 -- note: control + j is mapped in copilot.lua to accept the suggestion
 -----------------------------------------------------------
-map("n", "<leader>cp", ":Copilot panel<cr>")
-map("n", "<leader>ce", ":Copilot enable<cr>")
-map("n", "<leader>cd", ":Copilot disable<cr>")
+-- map("n", "<leader>cp", ":Copilot panel<cr>")
+-- map("n", "<leader>ce", ":Copilot enable<cr>")
+-- map("n", "<leader>cd", ":Copilot disable<cr>")
 
