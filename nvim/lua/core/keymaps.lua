@@ -100,7 +100,6 @@ wk.register({
 -----------------------------------------------------------
 -- toggle term
 -----------------------------------------------------------
-
 local tt_mappings = {
     name = "+terminal", -- name to display in popup
     t = { "<cmd>ToggleTerm<cr>", "Toggle Term" },
@@ -109,6 +108,7 @@ local tt_mappings = {
     p = { "<cmd>ToggleTerm direction=horizontal<cr>", "New Horizontal Term" },
     v = { "<cmd>ToggleTerm direction=vertical<cr>", "New Vertical Term" },
 }
+map("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
 
 wk.register(tt_mappings, { prefix = "<leader>t" })
 -----------------------------------------------------------
@@ -179,12 +179,3 @@ local mappings = {
 }
 
 wk.register(mappings, { prefix = "<leader>" })
-
------------------------------------------------------------
--- copilot
--- note: control + j is mapped in copilot.lua to accept the suggestion
------------------------------------------------------------
--- map("n", "<leader>cp", ":Copilot panel<cr>")
--- map("n", "<leader>ce", ":Copilot enable<cr>")
--- map("n", "<leader>cd", ":Copilot disable<cr>")
-

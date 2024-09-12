@@ -14,10 +14,6 @@ return require("packer").startup(function(use)
         requires={"nvim-lua/plenary.nvim"},
         {'sindrets/diffview.nvim'}
 	}
- --    use {"TimUntersberger/neogit",
- --        requires={"nvim-lua/plenary.nvim"},
- --        {'sindrets/diffview.nvim'}
-	-- }
     use {"lewis6991/gitsigns.nvim",
         config = function()
             require("gitsigns").setup()
@@ -77,20 +73,6 @@ return require("packer").startup(function(use)
             { "hrsh7th/vim-vsnip-integ" },
         }
     }
-    -- use "github/copilot.vim"
-    use {
-      "jackMort/ChatGPT.nvim",
-        config = function()
-          require("user/gpt").setup()
-        end,
-        requires = {
-          "MunifTanjim/nui.nvim",
-          "nvim-lua/plenary.nvim",
-          "folke/trouble.nvim",
-          "nvim-telescope/telescope.nvim"
-        }
-    }
-
     -- terminal float
     use {"akinsho/toggleterm.nvim", tag = '*', config = function()
       require("toggleterm").setup()
