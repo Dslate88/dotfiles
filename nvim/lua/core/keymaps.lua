@@ -175,6 +175,7 @@ local mappings = {
         s = { "<cmd>Telescope git_status<cr>", "Git Status" },
         c = { "<cmd>Telescope commands<cr>", "Commands" },
         p = { "<cmd>Telescope projects<cr>", "Projects" },
+        q = { "<cmd>Telescope quickfixhistory<cr>", "Quickfix History" }
     }
 }
 

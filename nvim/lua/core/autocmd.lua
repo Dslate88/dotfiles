@@ -13,19 +13,15 @@ autocmd('TextYankPost', {
 -- Formatting group
 -- Apply neoformat on save
 -- local packer_grp = vim.api.nvim_create_augroup("formatting", { clear = true } )
-augroup("formatting", { clear = true })
--- autocmd("BufWritePre * undojoin", {
---     pattern = "*",
---     command = "Neoformat",
---     group = "formatting"
--- })
+
+-- Formatting group
+augroup('Format', { clear = true })
 
 autocmd('BufWritePre', {
-  pattern = '*',
-  command = ":%s/\\s\\+$//e",
-  group = "formatting"
+  group = 'Format',
+  pattern = {'*.js', '*.jsx', '*.ts', '*.tsx', '*.html', '*.css', '*.json'},
+  command = 'Neoformat'
 })
-
 
 -- netrw auto group
 vim.cmd [[

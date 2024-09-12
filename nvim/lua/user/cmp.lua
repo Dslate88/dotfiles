@@ -33,12 +33,7 @@ local cmp = require'cmp'
           elseif has_words_before() then
             cmp.complete()
           else
-              local copilot_keys = vim.fn["copilot#Accept"]()
-              if copilot_keys ~= "" then
-                 vim.api.nvim_feedkeys(copilot_keys, "i", true)
-              else
-                 fallback()
-              end
+             fallback()
           end
       end, { "i", "s" }),
 
@@ -109,6 +104,32 @@ local cmp = require'cmp'
 
   require('lspconfig')['html'].setup {
     capabilities = capabilities
+  }
+
+  require('lspconfig')['eslint'].setup {
+    capabilities = capabilities
+  }
+  require('lspconfig').eslint.setup {
+    capabilities = capabilities,
+    settings = {
+      packageManager = 'npm',
+      codeActionOnSave = {
+        enable = true,
+        mode = 'all',  -- or "problems" to only fix actual errors
+      },
+      format = true,  -- Optional: you can use ESLint as a formatter
+    },
+    on_attach = function(client, bufnr)
+      -- Optionally disable formatting if you use a different tool like Prettier for formatting
+      client.server_capabilities.documentFormattingProvider = false
+    end
+  }
+
+  require('lspconfig').ts_ls.setup {
+    capabilities = capabilities,
+    on_attach = function(client, bufnr)
+      client.server_capabilities.documentFormattingProvider = false
+    end
   }
 
   require('lspconfig')['lua_ls'].setup {
