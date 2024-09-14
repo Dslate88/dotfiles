@@ -157,6 +157,9 @@ map("n", "<leader>ha", ":lua require('harpoon.mark').add_file()<cr>")
 map("n", "<leader>hn", ":lua require('harpoon.ui').nav_next()<cr>")
 map("n", "<leader>hp", ":lua require('harpoon.ui').nav_prev()<cr>")
 
+map("n", "<leader>ht", ":lua require('user.prompt_gen').execute()<cr>")
+map("n", "<leader>hs", ":lua require('user.ai_tools.scripts.harpoon_list').execute()<cr>")
+
 -----------------------------------------------------------
 -- telescope shortcuts
 -----------------------------------------------------------

@@ -1,0 +1,5 @@
+require('user.ai_tools.config')
+require('user.ai_tools.providers')
+require('user.ai_tools.scripts')
+require('user.ai_tools.utils')
+require('user.ai_tools.logger')
