@@ -1,6 +1,7 @@
 local M = {}
 
 M.default_provider = 'openai'
+M.default_system_message = "You are a helpful assistant."
 
 M.providers = {
     openai = {
