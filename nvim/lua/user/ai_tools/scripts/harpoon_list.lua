@@ -65,24 +65,6 @@ function M.format_prompt(goal, files)
 
 end
 
-local function show_ai_response(response)
-    local buf = vim.api.nvim_create_buf(false, true)
-    vim.api.nvim_buf_set_lines(buf, 0, -1, false, vim.split(response, "\n"))
-
-    local width = math.floor(vim.o.columns * 0.8)
-    local height = math.floor(vim.o.lines * 0.8)
-
-    vim.api.nvim_open_win(buf, true, {
-        relative = 'editor',
-        width = width,
-        height = height,
-        col = math.floor((vim.o.columns - width) / 2),
-        row = math.floor((vim.o.lines - height) / 2),
-        style = 'minimal',
-        border = 'rounded',
-    })
-end
-
 -- Function to submit the prompt to the AI provider
 function M.post(prompt)
     async.run(function()
@@ -101,7 +83,7 @@ function M.post(prompt)
             logger.log("Error during AI response request: " .. err, "ERROR")
         else
             logger.log("AI response received successfully", "INFO")
-            show_ai_response(result.choices[1].message.content)
+            utils.show_ai_response(result.choices[1].message.content)
         end
     end)
 end
@@ -133,6 +115,7 @@ function M.execute()
     end
 
     M.post(prompt)
+    logger.log("No marked files found during execution.", "WARNING")
 
 end
 
