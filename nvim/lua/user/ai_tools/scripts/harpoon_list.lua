@@ -5,6 +5,7 @@ local providers = require('user.ai_tools.providers')
 local utils = require('user.ai_tools.utils')
 local global_config = require('user.ai_tools.config')
 local history = require('user.ai_tools.history')
+local marked = require('user.ai_tools.harpoon')
 
 local M = {}
 
@@ -29,22 +30,6 @@ local function read_file(file_path)
     file:close()
 
     return content
-end
-
--- Function to get marked files from Harpoon
-function M.get_marked_files()
-    local Marked = require('harpoon.mark')
-    local files = {}
-
-    -- Iterate through marked files using Harpoon
-    for idx = 1, Marked.get_length() do
-        local filename = Marked.get_marked_file_name(idx)
-        if filename ~= "" then
-            table.insert(files, { filename = filename })
-        end
-    end
-
-    return files
 end
 
 -- Function to format the prompt
@@ -101,7 +86,7 @@ function M.execute()
         end
 
         -- Get marked files from Harpoon
-        local marked_files = M.get_marked_files()
+        local marked_files = marked.get_marked_files()
         if #marked_files == 0 then
             print("No marked files found during execution.")
             return
