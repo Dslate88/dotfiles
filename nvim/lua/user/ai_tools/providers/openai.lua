@@ -21,7 +21,8 @@ function M.send_request(prompt, settings)
         timeout = config.timeout
     })
 
-    local result = vim.fn.json_decode(response.body)
+    local result = vim.json.decode(response.body)
+
     if response.status ~= 200 then
         return nil, result.error.message
     end
