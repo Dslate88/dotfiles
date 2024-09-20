@@ -180,11 +180,17 @@ local mappings = {
         k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
         m = { "<cmd>Telescope marks<cr>", "Marks" },
         o = { "<cmd>Telescope oldfiles<cr>", "Old Files" },
-        r = { "<cmd>Telescope registers<cr>", "Registers" },
-        s = { "<cmd>Telescope git_status<cr>", "Git Status" },
         c = { "<cmd>Telescope commands<cr>", "Commands" },
-        p = { "<cmd>Telescope projects<cr>", "Projects" },
-        q = { "<cmd>Telescope quickfixhistory<cr>", "Quickfix History" }
+        -- treesitter
+        t = { "<cmd>lua require('telescope.builtin').treesitter()<cr>", "Treesitter" },
+        -- quickfix
+        q = { "<cmd>Telescope quickfix<cr>", "Quickfix Recent" },
+        qh = { "<cmd>Telescope quickfixhistory<cr>", "Quickfix History" },
+        -- lsp
+        r = { "<cmd>Telescope lsp_references<cr>", "References" },
+        d = { "<cmd>Telescope lsp_definitions<cr>", "Definitions" },
+        p = { "<cmd>Telescope lsp_type_definitions<cr>", "Type Definitions" },
+        s = { "<cmd>Telescope lsp_document_symbols<cr>", "Doc Symbols" },
     }
 }
 

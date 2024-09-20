@@ -1,3 +1,5 @@
+-- TODO: move harpoon specific logic/functiosn to utils/harpoon.lua
+-- TODO: the goal should be used as the system message, its not currently
 local async = require('plenary.async')
 local providers = require('user.ai_tools.providers')
 local utils = require('user.ai_tools.utils')

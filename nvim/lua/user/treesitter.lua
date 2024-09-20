@@ -9,6 +9,7 @@ require'nvim-treesitter.configs'.setup {
     "lua",
     "python",
     "regex",
+    "tsx",
     "typescript",
     "yaml",
   },

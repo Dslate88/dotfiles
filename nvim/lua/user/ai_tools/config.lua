@@ -9,8 +9,8 @@ M.providers = {
         model = "gpt-4o-mini",
     },
     azure = {
-        api_key = os.getenv("AZURE_API_KEY"),
-        endpoint = os.getenv("AZURE_ENDPOINT"),
+        api_key = os.getenv("AZURE_OPENAI_API_KEY"),
+        endpoint = os.getenv("AZURE_OPENAI_ENDPOINT"),
         deployment_id = "gpt-4o",
     },
 }
