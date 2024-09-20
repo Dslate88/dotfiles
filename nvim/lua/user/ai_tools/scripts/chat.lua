@@ -32,7 +32,7 @@ function M.execute()
         end
 
         local response = result.choices[1].message.content
-        utils.show_ai_response(response, config.window_type)
+        ui.display_response(response, config.window_type)
 
         -- Add to history if enabled
         if config.enable_history then

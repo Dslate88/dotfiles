@@ -49,10 +49,12 @@ local function open_response_window(buf, window_type)
         vim.cmd('vsplit')
         local win = vim.api.nvim_get_current_win()
         vim.api.nvim_win_set_buf(win, buf)
-        set_buffer_options(buf, RESPONSE_BUF_OPTS)  -- Use the centralized options
+
     else
         error('Invalid window type: ' .. window_type)
     end
+
+    set_buffer_options(buf, RESPONSE_BUF_OPTS)
 end
 
 function M.display_response(response, window_type)
