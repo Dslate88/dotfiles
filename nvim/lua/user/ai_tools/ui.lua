@@ -3,16 +3,38 @@ local history = require('user.ai_tools.history')
 local M = {}
 local callbacks = {}
 
-function M.display_response(response, window_type)
-    -- Create a new buffer for the response
-    local buf = vim.api.nvim_create_buf(false, true)
-    local lines = vim.split(response, "\n")
-    vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+local function create_buffer()
+    return vim.api.nvim_create_buf(false, true)
+end
 
-    -- Window options
+local function open_window(buf, opts)
+    return vim.api.nvim_open_win(buf, true, opts)
+end
+
+local function set_buffer_options(buf, options)
+    for key, value in pairs(options) do
+        vim.api.nvim_buf_set_option(buf, key, value)
+    end
+end
+
+local RESPONSE_BUF_OPTS = {
+    filetype = 'markdown',
+    wrap = true,
+    linebreak = true,
+    breakindent = true,
+    breakindentopt = 'shift:2,min:20',
+    textwidth = 0,
+    number = false,
+    relativenumber = false,
+    spell = false,
+    conceallevel = 0,
+}
+
+local function open_response_window(buf, window_type)
+    local width = math.floor(vim.o.columns * 0.8)
+    local height = math.floor(vim.o.lines * 0.8)
+
     if window_type == 'popup' then
-        local width = math.floor(vim.o.columns * 0.8)
-        local height = math.floor(vim.o.lines * 0.8)
         local opts = {
             relative = 'editor',
             width = width,
@@ -22,28 +44,25 @@ function M.display_response(response, window_type)
             style = 'minimal',
             border = 'rounded',
         }
-        vim.api.nvim_open_win(buf, true, opts)
+        open_window(buf, opts)
     elseif window_type == 'split' then
         vim.cmd('vsplit')
         local win = vim.api.nvim_get_current_win()
         vim.api.nvim_win_set_buf(win, buf)
+        set_buffer_options(buf, RESPONSE_BUF_OPTS)  -- Use the centralized options
     else
         error('Invalid window type: ' .. window_type)
     end
+end
 
-    -- Override global settings with buffer-specific options
-    vim.api.nvim_buf_set_option(buf, 'filetype', 'markdown') -- Set the filetype to 'markdown'
-    vim.api.nvim_buf_set_option(buf, 'wrap', true)          -- Enable line wrapping
-    vim.api.nvim_buf_set_option(buf, 'linebreak', true)     -- Break lines at word boundaries
-    vim.api.nvim_buf_set_option(buf, 'breakindent', true)   -- Indent wrapped lines
-    vim.api.nvim_buf_set_option(buf, 'breakindentopt', 'shift:2,min:20') -- Customize indentation
-    vim.api.nvim_buf_set_option(buf, 'textwidth', 0)        -- Disable automatic line breaks
-    vim.api.nvim_buf_set_option(buf, 'number', false)       -- Disable line numbers
-    vim.api.nvim_buf_set_option(buf, 'relativenumber', false) -- Disable relative line numbers
-    vim.api.nvim_buf_set_option(buf, 'spell', false)        -- Disable spell checking
-    vim.api.nvim_buf_set_option(buf, 'conceallevel', 0)     -- Disable concealment
-    vim.api.nvim_set_option('guifont', 'Monospace:h14')     -- GUI font
+function M.display_response(response, window_type)
+    -- Create a new buffer for the response
+    local buf = create_buffer()
+    local lines = vim.split(response, "\n")
+    vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
 
+    -- Open the response in the specified window type
+    open_response_window(buf, window_type)
 end
 
 function M.get_user_prompt(instructions, enable_history, on_submit)
