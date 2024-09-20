@@ -23,9 +23,10 @@ function M.send_request(prompt, settings)
             ["api-key"] = config.providers.azure.api_key,
             ["Content-Type"] = "application/json",
         },
+        body = vim.fn.json_encode(request_body),
     })
 
-    local result = vim.fn.json_encode(request_body)
+    local result = vim.fn.json_decode(response.body)
 
     if response.status ~= 200 then
         return nil, result.error.message
