@@ -17,28 +17,13 @@ local config = {
     system_message = "You are an expert code reviewer.", -- Customize AI role
 }
 
--- Helper function to read a file's content with better error handling
-local function read_file(file_path)
-    local normalized_path = utils.normalize_path(file_path)
-
-    local file = io.open(normalized_path, "r")
-    if not file then
-        return nil, "Could not open file: " .. normalized_path
-    end
-
-    local content = file:read("*all")
-    file:close()
-
-    return content
-end
-
 -- Function to format the prompt
 function M.format_prompt(goal, files)
     local prompt = {}
     table.insert(prompt, "GOAL: " .. goal .. "\n")
 
     for _, file in ipairs(files) do
-        local content, err = read_file(file.filename)
+        local content, err = utils.read_file(file.filename)
         if not content then
             print("Error reading file: " .. err)
             return nil, err

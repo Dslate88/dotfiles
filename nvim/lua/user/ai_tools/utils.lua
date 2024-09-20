@@ -21,6 +21,20 @@ function M.copy_to_clipboard(text)
     print("Prompt copied to clipboard!")
 end
 
+function M.read_file(file_path)
+    local normalized_path = M.normalize_path(file_path)
+
+    local file = io.open(normalized_path, "r")
+    if not file then
+        return nil, "Could not open file: " .. normalized_path
+    end
+
+    local content = file:read("*all")
+    file:close()
+
+    return content
+end
+
 function M.show_ai_response(response, window_type)
     -- Create a new buffer for the response
     local buf = vim.api.nvim_create_buf(false, true)
