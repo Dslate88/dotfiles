@@ -6,6 +6,7 @@ local utils = require('user.ai_tools.utils')
 local global_config = require('user.ai_tools.config')
 local history = require('user.ai_tools.history')
 local marked = require('user.ai_tools.harpoon')
+local ui = require('user.ai_tools.ui')
 
 local M = {}
 
@@ -56,7 +57,7 @@ function M.post(prompt)
         if err then
             print("Error during AI response request: " .. err)
         else
-            utils.show_ai_response(result.choices[1].message.content, config.window_type)
+            ui.display_response(result.choices[1].message.content, config.window_type)
         end
     end)
 end
@@ -64,7 +65,7 @@ end
 -- Main function to execute the Harpoon integration
 function M.execute()
     -- Request user input for the goal using prompt_with_history
-    utils.prompt_with_history("Enter the goal:", config.enable_history, function(goal)
+    ui.get_user_prompt("Enter the goal:", config.enable_history, function(goal)
         if goal == "" then
             print("Goal cannot be empty.")
             return

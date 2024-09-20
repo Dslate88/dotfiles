@@ -2,6 +2,7 @@ local M = {}
 local utils = require('user.ai_tools.utils')
 local history = require('user.ai_tools.history')
 local global_config = require('user.ai_tools.config')
+local ui = require('user.ai_tools.ui')
 
 local config = {
     provider = "openai",
@@ -11,7 +12,7 @@ local config = {
 }
 
 function M.execute()
-    utils.prompt_with_history("Enter your prompt:", config.enable_history, function(prompt)
+    ui.get_user_prompt("Enter your prompt:", config.enable_history, function(prompt)
         if prompt == "" then
             print("Prompt cannot be empty.")
             return
