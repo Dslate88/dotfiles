@@ -15,6 +15,6 @@ M.providers = {
     },
 }
 
-M.ai_timeout = 30
+M.timeout = 60000 -- 60 seconds
 
 return M

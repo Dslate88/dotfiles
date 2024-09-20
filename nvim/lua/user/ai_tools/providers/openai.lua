@@ -1,3 +1,4 @@
+local config = require('user.ai_tools.config')
 local curl = require('plenary.curl')
 
 local M = {}
@@ -10,13 +11,14 @@ function M.send_request(prompt, settings)
             ["Authorization"] = "Bearer " .. settings.api_key,
             ["Content-Type"] = "application/json",
         },
-        body = vim.fn.json_encode({
+        body = vim.json.encode({
             model = settings.model,
             messages = {
                 { role = "system", content = system_message },
                 { role = "user", content = prompt },
             },
         }),
+        timeout = config.timeout
     })
 
     local result = vim.fn.json_decode(response.body)

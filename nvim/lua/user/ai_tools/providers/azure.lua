@@ -10,7 +10,7 @@ local URL = ENDPOINT .. "/openai/deployments/" .. DEPLOYMENT_ID .. "/chat/comple
 function M.send_request(prompt, settings)
     local system_message = settings.system_message or "You are a helpful AI assistant"
 
-    local request_body = {
+    local body = {
         model = settings.model,
         messages = {
             { role = "system", content = system_message },
@@ -23,7 +23,8 @@ function M.send_request(prompt, settings)
             ["api-key"] = config.providers.azure.api_key,
             ["Content-Type"] = "application/json",
         },
-        body = vim.fn.json_encode(request_body),
+        body = vim.json.encode(body),
+        timeout = config.timeout
     })
 
     local result = vim.fn.json_decode(response.body)
