@@ -1,197 +1,199 @@
 local wk = require("which-key")
 
-local function map(mode, lhs, rhs, opts)
-  local options = { noremap = true, silent = true }
-  if opts then
-    options = vim.tbl_extend('force', options, opts)
-  end
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
+-- ===========================================================
+-- General Mappings
+-- ===========================================================
+wk.add({
+    { "<leader>yp", ":let @\" = expand('%:p')<cr>", desc = "Yank Full Path of Active Buffer" },
+    { "<leader>*r", ":%s/\\<<c-r><c-w>\\>//g<left><left>", desc = "Find and Replace Word Under Cursor" },
+    { "<leader>ww", ":w<cr>", desc = "Save File" },
+    { "<leader>Q", ":q!<cr>", desc = "Force Quit" },
+    { "<leader>qq", ":wq<cr>", desc = "Save and Quit" },
+    { "<leader>so", ":so %<cr>", desc = "Source Current File" },
+    { "<leader>cd", ":lcd %:p:h<CR>:pwd<CR>", desc = "Set Working Directory to Active Buffer" },
+    { "<leader><S-j>", "<C-f>", desc = "Scroll Down" },
+    { "<leader><S-k>", "<C-b>", desc = "Scroll Up" },
+}, { mode = "n" })
 
+-- ===========================================================
+-- Move Lines Efficiently in Normal Mode
+-- ===========================================================
+wk.add({
+    { "<leader>j", ":m+<cr>==", desc = "Move Line Down" },
+    { "<leader>k", ":m-2<cr>==", desc = "Move Line Up" },
+}, { mode = "n" })
 
------------------------------------------------------------
--- general
------------------------------------------------------------
+-- ===========================================================
+-- Move Lines Efficiently in Visual Mode
+-- ===========================================================
+wk.add({
+    { "<leader>j", ":m'>+<cr>gv=gv", desc = "Move Line Down (Visual)", mode = "v" },
+    { "<leader>k", ":m-2<cr>gv=gv", desc = "Move Line Up (Visual)", mode = "v" },
+}, { mode = "v" })
 
--- disable arrow keys
-map("", "<up>", "<nop>")
-map('', '<down>', '<nop>')
-map('', '<left>', '<nop>')
-map('', '<right>', '<nop>')
+-- ===========================================================
+-- Buffers Management
+-- ===========================================================
+wk.add({
+    -- Group Definition
+    { "<leader>b", group = "buffers" },
 
-map("n", "<leader>yp", ":let @\" = expand('%:p')<cr>") -- Yank full path of active buffer
-map("n", "<leader>*r", ":%s/\\<<c-r><c-w>\\>//g<left><left>") -- cursor find/replace all
-map("n", "<leader>ww", ":w<cr>")
-map("n", "<leader>Q", ":q!<cr>")
-map("n", "<leader>qq", ":wq<cr>")
-map("n", "<leader>so", ":so %<cr>")
-map('n', '<Leader>cd', ':lcd %:p:h<CR>:pwd<CR>') -- set wd to active buffer
-map("n", "<S-j>", "<C-f>") -- scroll down
-map("n", "<S-k>", "<C-b>") -- scroll up
-
------------------------------------------------------------
--- move lines efficiently
------------------------------------------------------------
-map("n", "<leader>k", ":m-2<cr>==")
-map("n", "<leader>j", ":m+<cr>==")
-map("v", "<leader>k", ":m-2<cr>gv=gv")
-map("v", "<leader>j", ":m'>+<cr>gv=gv")
-
------------------------------------------------------------
--- buffers
------------------------------------------------------------
-map("n", "<leader>B", ":enew<cr>")
-map("n", "<leader>bq", ":bp <bar> bd! #<cr>")
-map("n", "<leader>ba", ":bufdo bd!<cr>")
-
-map("n", "<leader><Tab>", ":bnext<cr>")
-map("n", "<leader><S-Tab>", ":bprevious<cr>")
-map("n", "<leader><leader>", "<c-^>")
-
-wk.register({
-    b = {
-        name = "+buffers",
-        B = { ":enew<cr>", "New buffer" },
-        q = { ":bp <bar> bd! #<cr>", "Close active buffer" },
-        a = { ":bufdo bd!<cr>", "Close all buffers" },
-        ["<Tab>"] = { ":bnext<cr>", "Next buffer" },
-        ["<S-Tab>"] = { ":bprevious<cr>", "Previous buffer" },
-        ["<leader>"] = { "<c-^>", "Cycle last 2 buffers" },
-    },
+    -- Buffer Commands
+    { "<leader>bB", ":enew<cr>", desc = "New Buffer" },
+    { "<leader>bq", ":bp <bar> bd! #<cr>", desc = "Close Active Buffer" },
+    { "<leader>ba", ":bufdo bd!<cr>", desc = "Close All Buffers" },
+    { "<leader>b<Tab>", ":bnext<cr>", desc = "Next Buffer" },
+    { "<leader>b<S-Tab>", ":bprevious<cr>", desc = "Previous Buffer" },
+    { "<leader>b<leader>", "<c-^>", desc = "Cycle Last 2 Buffers" },
 }, { prefix = "<leader>" })
 
------------------------------------------------------------
--- explorers/windows/tabs
------------------------------------------------------------
-map("n", "<leader>ep", ":Explore<cr>")
-map("n", "<leader>er", ":Rexplore<cr>")
-map("n", "<leader>el", ":Lexplore<cr>")
-map("n", "<leader>ea", ":Lexplore %:p:h<cr>")
-map("n", "<leader>tn", ":tabnew<cr>")
-map("n", "<leader>ws", "<C-W><C-S>", { noremap = false, silent = true })
-map("n", "<leader>wv", "<C-W><C-V>", { noremap = false, silent = true })
-map("n", "<leader>wj", "<C-W><C-J>", { noremap = false, silent = true })
-map("n", "<leader>wk", "<C-W><C-K>", { noremap = false, silent = true })
-map("n", "<leader>wl", "<C-W><C-L>", { noremap = false, silent = true })
-map("n", "<leader>wh", "<C-W><C-H>", { noremap = false, silent = true })
-map("n", "<leader>wc", ":close<cr>", { noremap = false, silent = true })
+-- ===========================================================
+-- Explorers and Windows Management
+-- ===========================================================
+wk.add({
+    -- Explorers Group
+    { "<leader>e", group = "explorers" },
+    { "<leader>ep", ":Explore<cr>", desc = "Explore" },
+    { "<leader>er", ":Rexplore<cr>", desc = "Re-explore" },
+    { "<leader>el", ":Lexplore<cr>", desc = "Left-Explore" },
+    { "<leader>ea", ":Lexplore %:p:h<cr>", desc = "Lexplore Directory" },
 
-wk.register({
-    e = {
-        name = "+explorers",
-        p = {":Explore<cr>", "Explore"},
-        r = {":Rexplore<cr>", "Rexplore"},
-        l = {":Lexplore<cr>", "Lexplore"},
-        a = {":Lexplore %:p:h<cr>", "Lexplore Directory"},
-    },
-    t = {":tabnew<cr>", "New Tab"},
-    w = {
-        name = "+windows",
-        s = {":split<cr>", "Horizontal Split"},
-        v = {":vsplit<cr>", "Vertical Split"},
-        j = {":wincmd j<cr>", "Window Down"},
-        k = {":wincmd k<cr>", "Window Up"},
-        l = {":wincmd l<cr>", "Window Right"},
-        h = {":wincmd h<cr>", "Window Left"},
-        c = {":close<cr>", "Close Window"},
-    },
-}, { prefix = "<leader>"})
+    -- Windows Group
+    { "<leader>w", group = "windows" },
+    { "<leader>ws", ":split<cr>", desc = "Horizontal Split" },
+    { "<leader>wv", ":vsplit<cr>", desc = "Vertical Split" },
+    { "<leader>wj", ":wincmd j<cr>", desc = "Window Down" },
+    { "<leader>wk", ":wincmd k<cr>", desc = "Window Up" },
+    { "<leader>wl", ":wincmd l<cr>", desc = "Window Right" },
+    { "<leader>wh", ":wincmd h<cr>", desc = "Window Left" },
+    { "<leader>wc", ":close<cr>", desc = "Close Window" },
+}, { prefix = "<leader>" })
 
------------------------------------------------------------
--- toggle term
------------------------------------------------------------
-local tt_mappings = {
-    name = "+terminal", -- name to display in popup
-    t = { "<cmd>ToggleTerm<cr>", "Toggle Term" },
-    a = { "<cmd>ToggleTermToggleAll<cr>", "Toggle All Terms" },
-    n = { "<cmd>ToggleTerm direction=float<cr>", "New Floating Term" },
-    p = { "<cmd>ToggleTerm direction=horizontal<cr>", "New Horizontal Term" },
-    v = { "<cmd>ToggleTerm direction=vertical<cr>", "New Vertical Term" },
-}
-map("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
+-- ===========================================================
+-- Toggle Terminal
+-- ===========================================================
+wk.add({
+    -- Group Definition
+    { "<leader>t", group = "terminal" },
 
-wk.register(tt_mappings, { prefix = "<leader>t" })
------------------------------------------------------------
--- netrw
------------------------------------------------------------
-map("n", "<buffer><tab>","mf", { noremap = true, silent = true })
+    -- Terminal Commands
+    { "<leader>tt", "<cmd>ToggleTerm<cr>", desc = "Toggle Terminal" },
+    { "<leader>ta", "<cmd>ToggleTermToggleAll<cr>", desc = "Toggle All Terminals" },
+    { "<leader>tn", "<cmd>ToggleTerm direction=float<cr>", desc = "New Floating Terminal" },
+    { "<leader>tp", "<cmd>ToggleTerm direction=horizontal<cr>", desc = "New Horizontal Terminal" },
+    { "<leader>tv", "<cmd>ToggleTerm direction=vertical<cr>", desc = "New Vertical Terminal" },
+}, { prefix = "<leader>" })
 
+-- ===========================================================
+-- Tabs Management
+-- ===========================================================
+wk.add({
+    -- Group Definition
+    { "<leader>T", group = "tabs" },
 
------------------------------------------------------------
--- vimwiki / markdown
------------------------------------------------------------
-map("n", "<leader>,wf", ":set filetype=markdown<cr>")
-map("n", "<leader>,wp", ":MarkdownPreviewToggle<cr>")
-map("n", "<Leader>,x", "<Plug>VimwikiIndex", { noremap = false, silent = true })
-map("n", "<Leader>,t", "<Plug>VimwikiTabIndex", { noremap = false, silent = true })
-map("n", "<Leader>,s", "<Plug>VimwikiUISelect", { noremap = false, silent = true })
-map("n", "<Leader>,i", "<Plug>VimwikiDiaryIndex", { noremap = false, silent = true })
-map("n", "<Leader>,wx", "<Plug>VimwikiMakeDiaryNote", { noremap = false, silent = true })
-map("n", "<Leader>,wt", "<Plug>VimwikiTabMakeDiaryNote", { noremap = false, silent = true })
-map("n", "<Leader>,wy", "<Plug>VimwikiMakeYesterdayDiaryNote", { noremap = false, silent = true })
-map("n", "<Leader>,wm", "<Plug>VimwikiMakeTomorrowDiaryNote", { noremap = false, silent = true })
-map("n", "<Leader>,wh", "<Plug>Vimwiki2HTML", { noremap = false, silent = true })
+    -- Tab Commands
+    { "<leader>Tn", ":tabnew<cr>", desc = "New Tab" },
+}, { prefix = "<leader>" })
 
------------------------------------------------------------
--- neogit
------------------------------------------------------------
-map("n", "<leader>ng", ":Neogit<cr>")
+-- ===========================================================
+-- Netrw
+-- ===========================================================
+wk.add({
+    { "<leader><buffer><tab>", "mf", desc = "Mark File in Netrw", mode = "n" },
+}, { prefix = "<leader>" })
 
------------------------------------------------------------
--- neoformat
------------------------------------------------------------
-map("n", "<leader>nf", ":Neoformat<cr>")
+-- ===========================================================
+-- Vimwiki / Markdown
+-- ===========================================================
+wk.add({
+    -- Group Definition
+    { "<leader>,w", group = "vimwiki" },
 
------------------------------------------------------------
--- lspconfig shortcuts
------------------------------------------------------------
-map("n", "<leader>e", ":lua vim.diagnostic.open_float()<cr>")
-map("n", "<leader>K", ":lua vim.lsp.buf.hover()<cr>")
+    -- Vimwiki Commands
+    { "<leader>,wf", ":set filetype=markdown<cr>", desc = "Set Filetype to Markdown" },
+    { "<leader>,wp", ":MarkdownPreviewToggle<cr>", desc = "Toggle Markdown Preview" },
+    { "<leader>,x", "<Plug>VimwikiIndex", desc = "Vimwiki Index" },
+    { "<leader>,t", "<Plug>VimwikiTabIndex", desc = "Vimwiki Tab Index" },
+    { "<leader>,s", "<Plug>VimwikiUISelect", desc = "Vimwiki UI Select" },
+    { "<leader>,i", "<Plug>VimwikiDiaryIndex", desc = "Vimwiki Diary Index" },
+    { "<leader>,wx", "<Plug>VimwikiMakeDiaryNote", desc = "Make Diary Note" },
+    { "<leader>,wt", "<Plug>VimwikiTabMakeDiaryNote", desc = "Make Diary Note in Tab" },
+    { "<leader>,wy", "<Plug>VimwikiMakeYesterdayDiaryNote", desc = "Make Yesterday Diary Note" },
+    { "<leader>,wm", "<Plug>VimwikiMakeTomorrowDiaryNote", desc = "Make Tomorrow Diary Note" },
+    { "<leader>,wh", "<Plug>Vimwiki2HTML", desc = "Convert to HTML" },
+}, { prefix = "<leader>" })
 
------------------------------------------------------------
--- harpoon shortcuts
------------------------------------------------------------
-map("n", "<leader>hu", ":lua require('harpoon.ui').toggle_quick_menu()<cr>")
-map("n", "<leader>ha", ":lua require('harpoon.mark').add_file()<cr>")
+-- ===========================================================
+-- Neogit
+-- ===========================================================
+wk.add({
+    { "<leader>ng", ":Neogit<cr>", desc = "Open Neogit" },
+}, { prefix = "<leader>" })
 
-map("n", "<leader>hn", ":lua require('harpoon.ui').nav_next()<cr>")
-map("n", "<leader>hp", ":lua require('harpoon.ui').nav_prev()<cr>")
+-- ===========================================================
+-- Neoformat
+-- ===========================================================
+wk.add({
+    { "<leader>nf", ":Neoformat<cr>", desc = "Format Code" },
+}, { prefix = "<leader>" })
 
------------------------------------------------------------
--- my custom scripts
------------------------------------------------------------
-map("n", "<leader>ht", ":lua require('user.prompt_gen').execute()<cr>")
-map("n", "<leader>ac", ":lua require('user.ai_tools.scripts.chat').execute()<CR>")
-map("n", "<leader>ah", ":lua require('user.ai_tools.scripts.harpoon_list').execute()<CR>")
+-- ===========================================================
+-- LSP Config Shortcuts
+-- ===========================================================
+wk.add({
+    { "<leader>K", ":lua vim.lsp.buf.hover()<cr>", desc = "Hover Documentation" },
+    { "<leader>d", ":lua vim.diagnostic.open_float()<cr>", desc = "Open Diagnostics" },
+}, { prefix = "<leader>" })
 
--- map("n", "<leader>hs", ":lua require('user.ai_tools.scripts.harpoon_list').execute()<cr>")
+-- ===========================================================
+-- Harpoon Shortcuts
+-- ===========================================================
+wk.add({
+    -- Group Definition
+    { "<leader>h", group = "harpoon" },
 
------------------------------------------------------------
--- telescope shortcuts
------------------------------------------------------------
+    -- Harpoon Commands
+    { "<leader>hu", ":lua require('harpoon.ui').toggle_quick_menu()<cr>", desc = "Toggle Harpoon Menu" },
+    { "<leader>ha", ":lua require('harpoon.mark').add_file()<cr>", desc = "Add File to Harpoon" },
+    { "<leader>hn", ":lua require('harpoon.ui').nav_next()<cr>", desc = "Next Harpoon File" },
+    { "<leader>hp", ":lua require('harpoon.ui').nav_prev()<cr>", desc = "Previous Harpoon File" },
+}, { prefix = "<leader>" })
 
-local mappings = {
-    f = {
-        name = "+Telescope",
-        f = { "<cmd>Telescope find_files<cr>", "Find Files" },
-        g = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
-        b = { "<cmd>Telescope buffers<cr>", "Buffers" },
-        h = { "<cmd>Telescope help_tags<cr>", "Help Tags" },
-        k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-        m = { "<cmd>Telescope marks<cr>", "Marks" },
-        o = { "<cmd>Telescope oldfiles<cr>", "Old Files" },
-        c = { "<cmd>Telescope commands<cr>", "Commands" },
-        -- treesitter
-        t = { "<cmd>lua require('telescope.builtin').treesitter()<cr>", "Treesitter" },
-        -- quickfix
-        q = { "<cmd>Telescope quickfix<cr>", "Quickfix Recent" },
-        qh = { "<cmd>Telescope quickfixhistory<cr>", "Quickfix History" },
-        -- lsp
-        r = { "<cmd>Telescope lsp_references<cr>", "References" },
-        d = { "<cmd>Telescope lsp_definitions<cr>", "Definitions" },
-        p = { "<cmd>Telescope lsp_type_definitions<cr>", "Type Definitions" },
-        s = { "<cmd>Telescope lsp_document_symbols<cr>", "Doc Symbols" },
-    }
-}
+-- ===========================================================
+-- Custom Scripts
+-- ===========================================================
+wk.add({
+    -- Group Definition
+    { "<leader>a", group = "ai_tools" },
 
-wk.register(mappings, { prefix = "<leader>" })
+    -- AI Tools Commands
+    { "<leader>ac", ":lua require('user.ai_tools.scripts.chat').execute()<CR>", desc = "AI Chat" },
+    { "<leader>ah", ":lua require('user.ai_tools.scripts.harpoon_list').execute()<CR>", desc = "Harpoon File List" },
+    { "<leader>ht", ":lua require('user.prompt_gen').execute()<cr>", desc = "Custom Prompt Generation" },
+}, { prefix = "<leader>" })
+
+-- ===========================================================
+-- Telescope Shortcuts
+-- ===========================================================
+wk.add({
+    -- Group Definition
+    { "<leader>f", group = "Telescope" },
+
+    -- Telescope Commands
+    { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+    { "<leader>fc", "<cmd>Telescope commands<cr>", desc = "Commands" },
+    { "<leader>fd", "<cmd>Telescope lsp_definitions<cr>", desc = "LSP Definitions" },
+    { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
+    { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
+    { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help Tags" },
+    { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
+    { "<leader>fm", "<cmd>Telescope marks<cr>", desc = "Marks" },
+    { "<leader>fo", "<cmd>Telescope oldfiles<cr>", desc = "Old Files" },
+    { "<leader>fp", "<cmd>Telescope lsp_type_definitions<cr>", desc = "LSP Type Definitions" },
+    { "<leader>fq", "<cmd>Telescope quickfix<cr>", desc = "Quickfix" },
+    { "<leader>fqh", "<cmd>Telescope quickfixhistory<cr>", desc = "Quickfix History" },
+    { "<leader>fr", "<cmd>Telescope lsp_references<cr>", desc = "LSP References" },
+    { "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Document Symbols" },
+    { "<leader>ft", "<cmd>lua require('telescope.builtin').treesitter()<cr>", desc = "Treesitter" },
+}, { prefix = "<leader>" })
+
