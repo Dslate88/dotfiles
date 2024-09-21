@@ -12,7 +12,7 @@ function M.log(message, level)
         print("Error opening log file: " .. (err or "Unknown error"))
         return
     end
-    
+
     file:write(log_entry .. "\n")
     file:close()
 end

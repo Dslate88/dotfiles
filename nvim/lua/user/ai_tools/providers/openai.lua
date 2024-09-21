@@ -4,8 +4,6 @@ local curl = require('plenary.curl')
 local M = {}
 
 function M.send_request(prompt, settings)
-    local system_message = settings.system_message or "You are a helpful assistant."
-
     local response = curl.post("https://api.openai.com/v1/chat/completions", {
         headers = {
             ["Authorization"] = "Bearer " .. settings.api_key,
@@ -14,7 +12,7 @@ function M.send_request(prompt, settings)
         body = vim.json.encode({
             model = settings.model,
             messages = {
-                { role = "system", content = system_message },
+                { role = "system", content = settings.system_message },
                 { role = "user", content = prompt },
             },
         }),

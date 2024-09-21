@@ -1,4 +1,3 @@
--- TODO: move harpoon specific logic/functiosn to utils/harpoon.lua
 -- TODO: the goal should be used as the system message, its not currently
 local async = require('plenary.async')
 local providers = require('user.ai_tools.providers')
@@ -7,21 +6,19 @@ local global_config = require('user.ai_tools.config')
 local history = require('user.ai_tools.history')
 local marked = require('user.ai_tools.harpoon')
 local ui = require('user.ai_tools.ui')
+local logger = require('user.ai_tools.logger')
 
 local M = {}
 
--- Define per-script configuration
 local config = {
     provider = "openai",
     window_type = "split", -- Options: 'popup' or 'split'
-    enable_history = true, -- Enable history navigation
-    system_message = "You are an expert code reviewer.", -- Customize AI role
+    enable_history = true,
+    system_message = "You are an expert code reviewer who helps the user with the following GOAL: ",
 }
 
--- Function to format the prompt
-function M.format_prompt(goal, files)
-    local prompt = {}
-    table.insert(prompt, "GOAL: " .. goal .. "\n")
+function M.format_files(files)
+    local p = {}
 
     for _, file in ipairs(files) do
         local content, err = utils.read_file(file.filename)
@@ -29,31 +26,24 @@ function M.format_prompt(goal, files)
             print("Error reading file: " .. err)
             return nil, err
         end
-        table.insert(prompt, "FILE NAME BEGIN: " .. file.filename .. "\n")
-        table.insert(prompt, "FILE CONTENT BEGIN\n" .. content .. "\nFILE CONTENT END\n")
+        table.insert(p, "FILE NAME BEGIN: " .. file.filename .. "\n")
+        table.insert(p, "FILE CONTENT BEGIN:\n" .. content .. "\nFILE CONTENT END\n")
     end
 
-    local final_prompt = table.concat(prompt, "\n")
-    return final_prompt
+    local prompt = table.concat(p, "\n")
+    return prompt
 end
 
--- Function to submit the prompt to the AI provider
-function M.post(prompt)
+function M.post(goal, prompt)
     async.run(function()
-        -- Select provider from config
-        local selected_provider = providers[config.provider]
-        if not selected_provider then
-            print("Invalid provider: " .. config.provider)
-            return
-        end
+        local provider = providers[config.provider]
 
-        -- Prepare provider settings by merging global and script-specific settings
         local provider_settings = vim.tbl_deep_extend("force", {}, global_config.providers[config.provider], {
-            system_message = config.system_message or global_config.default_system_message,
+            system_message = config.system_message .. goal
         })
+        logger.log("provider_settings: " .. provider_settings.system_message)
 
-        -- Make async request to the provider
-        local result, err = selected_provider.send_request(prompt, provider_settings)
+        local result, err = provider.send_request(prompt, provider_settings)
         if err then
             print("Error during AI response request: " .. err)
         else
@@ -62,34 +52,36 @@ function M.post(prompt)
     end)
 end
 
--- Main function to execute the Harpoon integration
 function M.execute()
-    -- Request user input for the goal using prompt_with_history
-    ui.get_user_prompt("Enter the goal:", config.enable_history, function(goal)
+    local function is_goal_empty(goal)
         if goal == "" then
             print("Goal cannot be empty.")
             return
         end
+    end
 
-        -- Get marked files from Harpoon
-        local marked_files = marked.get_marked_files()
+    local function is_marked_files(marked_files)
         if #marked_files == 0 then
             print("No marked files found during execution.")
             return
         end
+    end
 
-        -- Format the prompt
-        local prompt, err = M.format_prompt(goal, marked_files)
+    ui.get_user_prompt("Enter the goal:", config.enable_history, function(goal)
+        logger.log("initial goal input: " .. goal)
+        is_goal_empty(goal)
+
+        local files = marked.get_marked_files()
+        is_marked_files(files)
+
+        local prompt, err = M.format_files(files)
         if not prompt then
             print("Error formatting prompt: ", err)
             return
         end
 
-        -- Submit the prompt
-        M.post(prompt)
+        M.post(goal, prompt)
 
-        -- Add to history if enabled (optional, based on your design)
-        -- For `harpoon_list.lua`, you might choose not to store AI responses in history
         if config.enable_history then
             history.add(goal, "AI response not captured in this script.")
         end
