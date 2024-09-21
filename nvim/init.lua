@@ -21,4 +21,4 @@ require("user/vimwiki")
 require("user/null_ls")
 
 -- ai-tools
-require('user.ai_tools')
+require("user/ai_tools")
