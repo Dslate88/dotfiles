@@ -1,18 +1,26 @@
 local wk = require("which-key")
 
+-- Swap to the most recent buffer
+wk.add({
+    { "<leader><leader>", "<C-^>", desc = "Swap to Previous Buffer" },
+}, { prefix = "<leader>" })
+
 -- ===========================================================
 -- General Mappings
 -- ===========================================================
+-- just remove these..use standard keys...
 wk.add({
-    { "<leader>yp", ":let @\" = expand('%:p')<cr>", desc = "Yank Full Path of Active Buffer" },
-    { "<leader>*r", ":%s/\\<<c-r><c-w>\\>//g<left><left>", desc = "Find and Replace Word Under Cursor" },
-    { "<leader>ww", ":w<cr>", desc = "Save File" },
-    { "<leader>Q", ":q!<cr>", desc = "Force Quit" },
-    { "<leader>qq", ":wq<cr>", desc = "Save and Quit" },
-    { "<leader>so", ":so %<cr>", desc = "Source Current File" },
-    { "<leader>cd", ":lcd %:p:h<CR>:pwd<CR>", desc = "Set Working Directory to Active Buffer" },
-    { "<leader><S-j>", "<C-f>", desc = "Scroll Down" },
-    { "<leader><S-k>", "<C-b>", desc = "Scroll Up" },
+    { "<leader>g", group = "general" }, -- Group definition
+
+    { "<leader>gww", ":w<cr>", desc = "Save File" },
+    { "<leader>gqq", ":wq<cr>", desc = "Save and Quit" },
+    { "<leader>gQ", ":q!<cr>", desc = "Force Quit" },
+    { "<leader>gso", ":so %<cr>", desc = "Source Current File" },
+    { "<leader>gcd", ":lcd %:p:h<CR>:pwd<CR>", desc = "Set Working Directory" },
+    { "<leader>g*r", ":%s/\\<<c-r><c-w>\\>//g<left><left>", desc = "Find and Replace Word" },
+    { "<leader>gyp", ":let @\" = expand('%:p')<cr>", desc = "Yank Buffer Path" },
+    { "<leader>g<S-j>", "<C-f>", desc = "Scroll Down" },
+    { "<leader>g<S-k>", "<C-b>", desc = "Scroll Up" },
 }, { mode = "n" })
 
 -- ===========================================================
@@ -24,14 +32,6 @@ wk.add({
 }, { mode = "n" })
 
 -- ===========================================================
--- Move Lines Efficiently in Visual Mode
--- ===========================================================
-wk.add({
-    { "<leader>j", ":m'>+<cr>gv=gv", desc = "Move Line Down (Visual)", mode = "v" },
-    { "<leader>k", ":m-2<cr>gv=gv", desc = "Move Line Up (Visual)", mode = "v" },
-}, { mode = "v" })
-
--- ===========================================================
 -- Buffers Management
 -- ===========================================================
 wk.add({
@@ -39,49 +39,65 @@ wk.add({
     { "<leader>b", group = "buffers" },
 
     -- Buffer Commands
-    { "<leader>bB", ":enew<cr>", desc = "New Buffer" },
-    { "<leader>bq", ":bp <bar> bd! #<cr>", desc = "Close Active Buffer" },
-    { "<leader>ba", ":bufdo bd!<cr>", desc = "Close All Buffers" },
-    { "<leader>b<Tab>", ":bnext<cr>", desc = "Next Buffer" },
-    { "<leader>b<S-Tab>", ":bprevious<cr>", desc = "Previous Buffer" },
-    { "<leader>b<leader>", "<c-^>", desc = "Cycle Last 2 Buffers" },
+    { "<leader>bn", ":enew<cr>", desc = "New Buffer" },
+    { "<leader>bd", ":bd<cr>", desc = "Delete Buffer" },
+    { "<leader>bs", ":w<cr>", desc = "Save Buffer" },
+    { "<leader>bl", ":ls<cr>", desc = "List Buffers" },
+    { "<leader>bp", ":bprevious<cr>", desc = "Previous Buffer" },
+    { "<leader>bn", ":bnext<cr>", desc = "Next Buffer" },
+    { "<leader>bb", ":b#<cr>", desc = "Alternate Buffer" },
+    { "<leader>ba", ":bufdo bd<cr>", desc = "Delete All Buffers" },
 }, { prefix = "<leader>" })
 
 -- ===========================================================
--- Explorers and Windows Management
+-- Explorers
 -- ===========================================================
 wk.add({
-    -- Explorers Group
     { "<leader>e", group = "explorers" },
-    { "<leader>ep", ":Explore<cr>", desc = "Explore" },
-    { "<leader>er", ":Rexplore<cr>", desc = "Re-explore" },
-    { "<leader>el", ":Lexplore<cr>", desc = "Left-Explore" },
-    { "<leader>ea", ":Lexplore %:p:h<cr>", desc = "Lexplore Directory" },
+    { "<leader>ee", ":Lexplore<cr>", desc = "Open Explorer" },
+    { "<leader>er", ":Rexplore<cr>", desc = "Refresh Explorer" },
+    { "<leader>ed", ":Sex!<cr>", desc = "Open Explorer in Split" },
+    { "<leader>ev", ":Vexplore<cr>", desc = "Open Explorer Vertically" },
+    { "<leader>et", ":Texplore<cr>", desc = "Open Explorer in Tab" },
+    { "<leader>eu", ":Ex <C-r>=escape(expand('%:h'), ' ')<cr><cr>", desc = "Explore File Directory" },
+}, { prefix = "<leader>" })
 
-    -- Windows Group
+-- ===========================================================
+--  Windows Management
+-- ===========================================================
+wk.add({
     { "<leader>w", group = "windows" },
-    { "<leader>ws", ":split<cr>", desc = "Horizontal Split" },
-    { "<leader>wv", ":vsplit<cr>", desc = "Vertical Split" },
-    { "<leader>wj", ":wincmd j<cr>", desc = "Window Down" },
-    { "<leader>wk", ":wincmd k<cr>", desc = "Window Up" },
-    { "<leader>wl", ":wincmd l<cr>", desc = "Window Right" },
-    { "<leader>wh", ":wincmd h<cr>", desc = "Window Left" },
+    { "<leader>ws", ":split<cr>", desc = "Split Horizontally" },
+    { "<leader>wv", ":vsplit<cr>", desc = "Split Vertically" },
+    { "<leader>wh", "<C-w>h", desc = "Window Left" },
+    { "<leader>wj", "<C-w>j", desc = "Window Down" },
+    { "<leader>wk", "<C-w>k", desc = "Window Up" },
+    { "<leader>wl", "<C-w>l", desc = "Window Right" },
+    { "<leader>ww", "<C-w>w", desc = "Other Window" },
+    { "<leader>wq", ":q<cr>", desc = "Close Window" },
     { "<leader>wc", ":close<cr>", desc = "Close Window" },
+    { "<leader>wo", ":only<cr>", desc = "Keep Only Current Window" },
+    { "<leader>w=", "<C-w>=", desc = "Balance Windows" },
+    { "<leader>w+", ":resize +5<cr>", desc = "Increase Height" },
+    { "<leader>w-", ":resize -5<cr>", desc = "Decrease Height" },
+    { "<leader>w>", ":vertical resize +5<cr>", desc = "Increase Width" },
+    { "<leader>w<", ":vertical resize -5<cr>", desc = "Decrease Width" },
 }, { prefix = "<leader>" })
 
 -- ===========================================================
 -- Toggle Terminal
 -- ===========================================================
 wk.add({
-    -- Group Definition
     { "<leader>t", group = "terminal" },
 
     -- Terminal Commands
     { "<leader>tt", "<cmd>ToggleTerm<cr>", desc = "Toggle Terminal" },
-    { "<leader>ta", "<cmd>ToggleTermToggleAll<cr>", desc = "Toggle All Terminals" },
-    { "<leader>tn", "<cmd>ToggleTerm direction=float<cr>", desc = "New Floating Terminal" },
-    { "<leader>tp", "<cmd>ToggleTerm direction=horizontal<cr>", desc = "New Horizontal Terminal" },
-    { "<leader>tv", "<cmd>ToggleTerm direction=vertical<cr>", desc = "New Vertical Terminal" },
+    { "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", desc = "Floating Terminal" },
+    { "<leader>th", "<cmd>ToggleTerm size=10 direction=horizontal<cr>", desc = "Horizontal Terminal" },
+    { "<leader>tv", "<cmd>ToggleTerm size=80 direction=vertical<cr>", desc = "Vertical Terminal" },
+    { "<leader>tg", "<cmd>lua _LAZYGIT_TOGGLE()<cr>", desc = "LazyGit Terminal" },
+    { "<leader>tn", "<cmd>lua _NODE_TOGGLE()<cr>", desc = "Node REPL Terminal" },
+    { "<leader>tp", "<cmd>lua _PYTHON_TOGGLE()<cr>", desc = "Python REPL Terminal" },
 }, { prefix = "<leader>" })
 
 -- ===========================================================
@@ -99,28 +115,42 @@ wk.add({
 -- Netrw
 -- ===========================================================
 wk.add({
-    { "<leader><buffer><tab>", "mf", desc = "Mark File in Netrw", mode = "n" },
+    -- Group Definition
+    { "<leader>n", group = "netrw" },
+
+    -- Netrw Commands
+    { "<leader>ne", ":Lexplore<cr>", desc = "Open Netrw" },
+    { "<leader>nn", ":Ex<cr>", desc = "Explore Current Directory" },
+    { "<leader>nu", "-", desc = "Parent Directory" },
+    { "<leader>nh", "gh", desc = "Toggle Hidden Files" },
+    { "<leader>ns", "S", desc = "Sort Files" },
+    { "<leader>nf", "%", desc = "New File" },
+    { "<leader>nd", "D", desc = "Delete File" },
+    { "<leader>nr", "R", desc = "Rename File" },
+    { "<leader>nm", "mf", desc = "Mark File" },
+    { "<leader>nc", "mc", desc = "Copy Marked Files" },
+    { "<leader>nv", "mb", desc = "Move Marked Files" },
 }, { prefix = "<leader>" })
+
 
 -- ===========================================================
 -- Vimwiki / Markdown
 -- ===========================================================
 wk.add({
-    -- Group Definition
-    { "<leader>,w", group = "vimwiki" },
+    { "<leader>v", group = "vimwiki" },
 
     -- Vimwiki Commands
-    { "<leader>,wf", ":set filetype=markdown<cr>", desc = "Set Filetype to Markdown" },
-    { "<leader>,wp", ":MarkdownPreviewToggle<cr>", desc = "Toggle Markdown Preview" },
-    { "<leader>,x", "<Plug>VimwikiIndex", desc = "Vimwiki Index" },
-    { "<leader>,t", "<Plug>VimwikiTabIndex", desc = "Vimwiki Tab Index" },
-    { "<leader>,s", "<Plug>VimwikiUISelect", desc = "Vimwiki UI Select" },
-    { "<leader>,i", "<Plug>VimwikiDiaryIndex", desc = "Vimwiki Diary Index" },
-    { "<leader>,wx", "<Plug>VimwikiMakeDiaryNote", desc = "Make Diary Note" },
-    { "<leader>,wt", "<Plug>VimwikiTabMakeDiaryNote", desc = "Make Diary Note in Tab" },
-    { "<leader>,wy", "<Plug>VimwikiMakeYesterdayDiaryNote", desc = "Make Yesterday Diary Note" },
-    { "<leader>,wm", "<Plug>VimwikiMakeTomorrowDiaryNote", desc = "Make Tomorrow Diary Note" },
-    { "<leader>,wh", "<Plug>Vimwiki2HTML", desc = "Convert to HTML" },
+    { "<leader>vf", ":set filetype=markdown<cr>", desc = "Set Filetype Markdown" },
+    { "<leader>vp", ":MarkdownPreviewToggle<cr>", desc = "Toggle Preview" },
+    { "<leader>vi", "<Plug>VimwikiIndex", desc = "Vimwiki Index" },
+    { "<leader>vt", "<Plug>VimwikiTabIndex", desc = "Vimwiki Tab Index" },
+    { "<leader>vs", "<Plug>VimwikiUISelect", desc = "UI Select" },
+    { "<leader>vd", "<Plug>VimwikiDiaryIndex", desc = "Diary Index" },
+    { "<leader>vn", "<Plug>VimwikiMakeDiaryNote", desc = "New Diary Note" },
+    { "<leader>vT", "<Plug>VimwikiTabMakeDiaryNote", desc = "New Diary Note in Tab" },
+    { "<leader>vy", "<Plug>VimwikiMakeYesterdayDiaryNote", desc = "Yesterday's Note" },
+    { "<leader>vm", "<Plug>VimwikiMakeTomorrowDiaryNote", desc = "Tomorrow's Note" },
+    { "<leader>vh", "<Plug>Vimwiki2HTML", desc = "Convert to HTML" },
 }, { prefix = "<leader>" })
 
 -- ===========================================================
@@ -134,66 +164,75 @@ wk.add({
 -- Neoformat
 -- ===========================================================
 wk.add({
-    { "<leader>nf", ":Neoformat<cr>", desc = "Format Code" },
+    { "<leader>F", group = "formatting" },
+
+    -- Formatting Commands
+    { "<leader>Ff", ":Neoformat<cr>", desc = "Format File" },
+    { "<leader>Fa", ":%Neoformat<cr>", desc = "Format All" },
 }, { prefix = "<leader>" })
 
 -- ===========================================================
 -- LSP Config Shortcuts
 -- ===========================================================
 wk.add({
-    { "<leader>K", ":lua vim.lsp.buf.hover()<cr>", desc = "Hover Documentation" },
-    { "<leader>d", ":lua vim.diagnostic.open_float()<cr>", desc = "Open Diagnostics" },
+    { "<leader>l", group = "lsp" },
+
+    -- LSP Commands
+    { "<leader>lh", ":lua vim.lsp.buf.hover()<cr>", desc = "Hover Docs" },
+    { "<leader>ld", ":lua vim.diagnostic.open_float()<cr>", desc = "Show Diagnostics" },
+    { "<leader>lr", ":lua vim.lsp.buf.rename()<cr>", desc = "Rename Symbol" },
+    { "<leader>lf", ":lua vim.lsp.buf.format()<cr>", desc = "Format Document" },
+    { "<leader>la", ":lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
+    { "<leader>ln", ":lua vim.diagnostic.goto_next()<cr>", desc = "Next Diagnostic" },
+    { "<leader>lp", ":lua vim.diagnostic.goto_prev()<cr>", desc = "Prev Diagnostic" },
 }, { prefix = "<leader>" })
 
 -- ===========================================================
 -- Harpoon Shortcuts
 -- ===========================================================
 wk.add({
-    -- Group Definition
     { "<leader>h", group = "harpoon" },
 
     -- Harpoon Commands
-    { "<leader>hu", ":lua require('harpoon.ui').toggle_quick_menu()<cr>", desc = "Toggle Harpoon Menu" },
-    { "<leader>ha", ":lua require('harpoon.mark').add_file()<cr>", desc = "Add File to Harpoon" },
-    { "<leader>hn", ":lua require('harpoon.ui').nav_next()<cr>", desc = "Next Harpoon File" },
-    { "<leader>hp", ":lua require('harpoon.ui').nav_prev()<cr>", desc = "Previous Harpoon File" },
+    { "<leader>ha", ":lua require('harpoon.mark').add_file()<cr>", desc = "Add Mark" },
+    { "<leader>hu", ":lua require('harpoon.ui').toggle_quick_menu()<cr>", desc = "Toggle Menu" },
+    { "<leader>hn", ":lua require('harpoon.ui').nav_next()<cr>", desc = "Next Mark" },
+    { "<leader>hp", ":lua require('harpoon.ui').nav_prev()<cr>", desc = "Prev Mark" },
+    { "<leader>h1", ":lua require('harpoon.ui').nav_file(1)<cr>", desc = "Go to Mark 1" },
+    { "<leader>h2", ":lua require('harpoon.ui').nav_file(2)<cr>", desc = "Go to Mark 2" },
+    { "<leader>h3", ":lua require('harpoon.ui').nav_file(3)<cr>", desc = "Go to Mark 3" },
+    { "<leader>h4", ":lua require('harpoon.ui').nav_file(4)<cr>", desc = "Go to Mark 4" },
 }, { prefix = "<leader>" })
 
 -- ===========================================================
 -- Custom Scripts
 -- ===========================================================
 wk.add({
-    -- Group Definition
     { "<leader>a", group = "ai_tools" },
 
     -- AI Tools Commands
     { "<leader>ac", ":lua require('user.ai_tools.scripts.chat').execute()<CR>", desc = "AI Chat" },
-    { "<leader>ah", ":lua require('user.ai_tools.scripts.harpoon_list').execute()<CR>", desc = "Harpoon File List" },
-    { "<leader>ht", ":lua require('user.prompt_gen').execute()<cr>", desc = "Custom Prompt Generation" },
+    { "<leader>al", ":lua require('user.ai_tools.scripts.harpoon_list').execute()<CR>", desc = "Harpoon List" },
+    { "<leader>ap", ":lua require('user.prompt_gen').execute()<cr>", desc = "Generate Prompt" },
 }, { prefix = "<leader>" })
 
 -- ===========================================================
 -- Telescope Shortcuts
 -- ===========================================================
 wk.add({
-    -- Group Definition
-    { "<leader>f", group = "Telescope" },
+    { "<leader>f", group = "find" },
 
     -- Telescope Commands
-    { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
-    { "<leader>fc", "<cmd>Telescope commands<cr>", desc = "Commands" },
-    { "<leader>fd", "<cmd>Telescope lsp_definitions<cr>", desc = "LSP Definitions" },
     { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
     { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
-    { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help Tags" },
-    { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
-    { "<leader>fm", "<cmd>Telescope marks<cr>", desc = "Marks" },
-    { "<leader>fo", "<cmd>Telescope oldfiles<cr>", desc = "Old Files" },
-    { "<leader>fp", "<cmd>Telescope lsp_type_definitions<cr>", desc = "LSP Type Definitions" },
-    { "<leader>fq", "<cmd>Telescope quickfix<cr>", desc = "Quickfix" },
-    { "<leader>fqh", "<cmd>Telescope quickfixhistory<cr>", desc = "Quickfix History" },
-    { "<leader>fr", "<cmd>Telescope lsp_references<cr>", desc = "LSP References" },
-    { "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Document Symbols" },
-    { "<leader>ft", "<cmd>lua require('telescope.builtin').treesitter()<cr>", desc = "Treesitter" },
+    { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find Buffers" },
+    { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Find Help" },
+    { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Find Keymaps" },
+    { "<leader>fm", "<cmd>Telescope marks<cr>", desc = "Find Marks" },
+    { "<leader>fo", "<cmd>Telescope oldfiles<cr>", desc = "Find Recent Files" },
+    { "<leader>fd", "<cmd>Telescope lsp_definitions<cr>", desc = "Find Definitions" },
+    { "<leader>fr", "<cmd>Telescope lsp_references<cr>", desc = "Find References" },
+    { "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Find Symbols" },
+    { "<leader>ft", "<cmd>Telescope treesitter<cr>", desc = "Find Treesitter" },
 }, { prefix = "<leader>" })
 
