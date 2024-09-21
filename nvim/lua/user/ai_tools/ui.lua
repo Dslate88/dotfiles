@@ -96,8 +96,8 @@ function M.get_user_prompt(instructions, enable_history, on_submit)
 
     -- Key mappings for history navigation in normal mode
     if enable_history then
-        vim.api.nvim_buf_set_keymap(buf, 'n', 'k', ':lua require("user.ai_tools.utils").history_prev(' .. buf .. ')<CR>', { noremap = true, silent = true })
-        vim.api.nvim_buf_set_keymap(buf, 'n', 'j', ':lua require("user.ai_tools.utils").history_next(' .. buf .. ')<CR>', { noremap = true, silent = true })
+        vim.api.nvim_buf_set_keymap(buf, 'n', 'k', ':lua require("user.ai_tools.ui").history_prev(' .. buf .. ')<CR>', { noremap = true, silent = true })
+        vim.api.nvim_buf_set_keymap(buf, 'n', 'j', ':lua require("user.ai_tools.ui").history_next(' .. buf .. ')<CR>', { noremap = true, silent = true })
     end
 
     -- Map Enter key to submit the prompt
