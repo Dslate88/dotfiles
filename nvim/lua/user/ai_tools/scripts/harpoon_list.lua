@@ -14,7 +14,7 @@ local config = {
 	provider = "openai",
 	window_type = "split", -- Options: 'popup' or 'split'
 	enable_history = true,
-	system_message = "You are an expert code reviewer who helps the user with the following GOAL: ",
+	system_message = "You are an expert code reviewer, you think step by step, explain your thoughts and you help the user with the following GOAL: ",
 }
 
 function M.format_files(files)

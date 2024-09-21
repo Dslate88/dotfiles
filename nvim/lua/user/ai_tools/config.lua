@@ -8,6 +8,7 @@ M.providers = {
 	openai = {
 		api_key = os.getenv("OPENAI_API_KEY"),
 		model = "gpt-4o",
+		-- model = "gpt-4o-mini",
 	},
 	azure = {
 		api_key = os.getenv("AZURE_OPENAI_API_KEY"),

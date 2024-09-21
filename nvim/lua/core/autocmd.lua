@@ -1,12 +1,12 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
-augroup('YankHighlight', { clear = true })
-autocmd('TextYankPost', {
-  group = 'YankHighlight',
-  callback = function()
-    vim.highlight.on_yank({ higroup = 'IncSearch', timeout = '1000' })
-  end
+augroup("YankHighlight", { clear = true })
+autocmd("TextYankPost", {
+	group = "YankHighlight",
+	callback = function()
+		vim.highlight.on_yank({ higroup = "IncSearch", timeout = "1000" })
+	end,
 })
 
 -- Formatting group
@@ -14,16 +14,16 @@ autocmd('TextYankPost', {
 -- local packer_grp = vim.api.nvim_create_augroup("formatting", { clear = true } )
 
 -- Formatting group
-augroup('Format', { clear = true })
+augroup("Format", { clear = true })
 
-autocmd('BufWritePre', {
-  group = 'Format',
-  pattern = {'*.js', '*.jsx', '*.ts', '*.tsx', '*.html', '*.css', '*.json', '*.lua'},
-  command = 'Neoformat'
+autocmd("BufWritePre", {
+	group = "Format",
+	pattern = { "*.js", "*.jsx", "*.ts", "*.tsx", "*.html", "*.css", "*.json", "*.lua" },
+	command = "Neoformat",
 })
 
 -- netrw auto group
-vim.cmd [[
+vim.cmd([[
 
     function! NetrwMapping()
     endfunction
@@ -57,4 +57,4 @@ vim.cmd [[
       nmap <buffer> f; mx
     endfunction
 
-]]
+]])

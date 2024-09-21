@@ -233,4 +233,5 @@ wk.add({
 	{ "<leader>fr", "<cmd>Telescope lsp_references<cr>", desc = "Find References" },
 	{ "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Find Symbols" },
 	{ "<leader>ft", "<cmd>Telescope treesitter<cr>", desc = "Find Treesitter" },
+	{ "<leader>fq", "<cmd>Telescope quickfix<cr>", desc = "View Quickfix" },
 }, { prefix = "<leader>" })
