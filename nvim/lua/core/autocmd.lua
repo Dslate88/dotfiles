@@ -1,7 +1,6 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
-
 augroup('YankHighlight', { clear = true })
 autocmd('TextYankPost', {
   group = 'YankHighlight',
@@ -19,7 +18,7 @@ augroup('Format', { clear = true })
 
 autocmd('BufWritePre', {
   group = 'Format',
-  pattern = {'*.js', '*.jsx', '*.ts', '*.tsx', '*.html', '*.css', '*.json'},
+  pattern = {'*.js', '*.jsx', '*.ts', '*.tsx', '*.html', '*.css', '*.json', '*.lua'},
   command = 'Neoformat'
 })
 

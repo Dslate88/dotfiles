@@ -9,9 +9,8 @@ require("mason-lspconfig").setup({
         -- "black", -- run MasonInstall black manually
         "tflint",
         "ts_ls", -- typescript
-        "eslint"
+        "eslint",
+        "stylua"
     },
     automatic_installation = true,
 })
-
-
