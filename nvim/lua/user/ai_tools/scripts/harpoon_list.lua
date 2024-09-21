@@ -1,7 +1,7 @@
 -- TODO: the goal should be used as the system message, its not currently
 local async = require("plenary.async")
 local utils = require("user.ai_tools.utils")
-local providers = require("user.ai_tools.providers")
+local provider_factory = require("user.ai_tools.providers.provider_factory")
 local logger = require("user.ai_tools.logger")
 local ui = require("user.ai_tools.ui")
 local global_config = require("user.ai_tools.config")
@@ -36,7 +36,7 @@ end
 
 function M.post(goal, prompt)
 	async.run(function()
-		local provider = providers[config.provider]
+		local provider = provider_factory.get_provider(config.provider)
 
 		local provider_settings = vim.tbl_deep_extend("force", {}, global_config.providers[config.provider], {
 			system_message = config.system_message .. goal,

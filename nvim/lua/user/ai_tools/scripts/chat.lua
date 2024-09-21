@@ -1,5 +1,5 @@
 local M = {}
-local utils = require("user.ai_tools.utils")
+local provider_factory = require("user.ai_tools.providers.provider_factory")
 local history = require("user.ai_tools.history")
 local global_config = require("user.ai_tools.config")
 local ui = require("user.ai_tools.ui")
@@ -19,13 +19,13 @@ function M.execute()
 		end
 
 		-- Use the provider specified in the script's config
-		local provider_module = require("user.ai_tools.providers." .. config.provider)
+		local provider = provider_factory.get_provider(config.provider)
 		local provider_settings = vim.tbl_deep_extend("force", {}, global_config.providers[config.provider], {
 			system_message = config.system_message or global_config.default_system_message,
 		})
 
 		-- Send the request
-		local result, err = provider_module.send_request(prompt, provider_settings)
+		local result, err = provider.send_request(prompt, provider_settings)
 		if err then
 			print("Error: " .. err)
 			return
