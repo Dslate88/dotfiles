@@ -10,7 +10,9 @@ require("mason-lspconfig").setup({
 		"tflint",
 		"ts_ls", -- typescript
 		"eslint",
-		-- "stylua", -- manual install this
+		-- "prettier", -- manual :MasonInstall prettier
+		-- "stylua", -- manual :MasonInstall stylua
+		-- "eslint-lsp", -- manual :MasonInstall eslint-lsp
 	},
 	automatic_installation = true,
 })
