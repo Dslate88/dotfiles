@@ -66,21 +66,16 @@ function M.execute()
 
 		local final = (cfg.system_prefix or "") .. "\n\n### GOAL\n" .. goal .. "\n\n### FILES\n" .. files_block
 
-		async.run(function()
-			local response, err = baml.send(final)
-			if err then
-				vim.schedule(function()
-					vim.notify("BAML error: " .. err, vim.log.levels.ERROR)
-				end)
-				return
-			end
-			vim.schedule(function()
-				ui.display_response(response, cfg.window_type)
-				if cfg.enable_history then
-					history.add(goal, response or "AI response not captured.")
-				end
-			end)
-		end)
+		local response, err = baml.send(final)
+		if err then
+			vim.notify("BAML error: " .. err, vim.log.levels.ERROR)
+			return
+		end
+
+		ui.display_response(response, cfg.window_type)
+		if cfg.enable_history then
+			history.add(goal, response or "AI response not captured.")
+		end
 	end)
 end
 

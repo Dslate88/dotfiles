@@ -6,7 +6,8 @@ local app_config = require("user.ai_tools.config")
 local baml = require("user.ai_tools.baml_client")
 
 local cfg = {
-	window_type = app_config.defaults.window or "split",
+	-- window_type = app_config.defaults.window or "split",
+	window_type = "popup",
 	enable_history = app_config.defaults.history ~= false,
 }
 

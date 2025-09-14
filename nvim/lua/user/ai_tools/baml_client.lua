@@ -49,7 +49,7 @@ function M.send(prompt)
 	})
 
 	if not ok or not response then
-		return nil, "BAML request failed: no response"
+		return nil, "BAML request failed: " .. tostring(response or "no response")
 	end
 
 	if response.status ~= 200 then
