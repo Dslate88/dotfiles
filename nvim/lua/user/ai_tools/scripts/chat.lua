@@ -8,7 +8,7 @@ local config = {
 	provider = "openai",
 	window_type = "popup",
 	enable_history = true,
-	system_message = "You are a helpful assistant.",
+	system_message = "Formatting re-enabled - code output should be wrapped in markdown, and use markdown to make text easer to read too.",
 }
 
 function M.execute()

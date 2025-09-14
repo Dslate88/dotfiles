@@ -5,7 +5,7 @@ local M = {}
 
 local DEPLOYMENT_ID = config.providers.azure.deployment_id
 local ENDPOINT = config.providers.azure.endpoint
-local URL = ENDPOINT .. "/openai/deployments/" .. DEPLOYMENT_ID .. "/chat/completions?api-version=2023-03-15-preview"
+local URL = ENDPOINT .. "/openai/deployments/" .. DEPLOYMENT_ID .. "/chat/completions?api-version=2024-12-01-preview"
 
 function M.send_request(prompt, settings)
 	local system_message = settings.system_message or "You are a helpful AI assistant"
