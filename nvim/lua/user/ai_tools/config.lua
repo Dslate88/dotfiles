@@ -7,7 +7,7 @@ M.baml = {
 }
 
 M.defaults = {
-	window = "split", -- OR "popup"
+	window = "split", -- "split" | "popup"
 	history = true,
 }
 
