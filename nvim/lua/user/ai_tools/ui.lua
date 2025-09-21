@@ -75,6 +75,7 @@ function M.get_user_prompt(instructions, enable_history, on_submit)
 	vim.api.nvim_buf_set_option(buf, "buftype", "prompt")
 	vim.api.nvim_buf_set_option(buf, "bufhidden", "wipe")
 	vim.api.nvim_buf_set_option(buf, "filetype", "text")
+	vim.fn.prompt_setprompt(buf, "")
 
 	-- Insert prompt message
 	vim.api.nvim_buf_set_lines(buf, 0, -1, false, { instructions, "" })
