@@ -8,13 +8,11 @@ local function unwrap_body(body)
 		return ""
 	end
 
-	-- Try to decode as JSON; server might be returning a JSON *string*.
 	local ok, decoded = pcall(vim.json.decode, body)
 	if ok then
 		if type(decoded) == "string" then
 			return decoded
 		elseif type(decoded) == "table" then
-			-- Heuristics: try common fields if server switched to an object at some point.
 			if type(decoded.content) == "string" then
 				return decoded.content
 			end
@@ -27,34 +25,32 @@ local function unwrap_body(body)
 			if type(decoded.message) == "table" and type(decoded.message.content) == "string" then
 				return decoded.message.content
 			end
-			-- Fallback: pretty-print the JSON so you at least see something readable
 			return vim.inspect(decoded)
 		end
 	end
 
-	-- Not JSON; just return raw text
 	return body
 end
 
--- Contract: send(prompt) -> (string_response, err)
-function M.send(prompt)
-	if not cfg.baml or not cfg.baml.endpoint then
-		return nil, "BAML endpoint is not configured (config.baml.endpoint missing)."
+function M.send(endpoint_key, prompt)
+	local endpoint_cfg = cfg.endpoints[endpoint_key]
+	if not endpoint_cfg or not endpoint_cfg.endpoint then
+		return nil, "Endpoint configuration for " .. tostring(endpoint_key) .. " is missing."
 	end
 
-	local ok, response = pcall(curl.post, cfg.baml.endpoint, {
-		headers = (cfg.baml.headers or { ["Content-Type"] = "application/json" }),
+	local ok, response = pcall(curl.post, endpoint_cfg.endpoint, {
+		headers = endpoint_cfg.headers,
 		body = vim.json.encode({ prompt = prompt }),
-		timeout = cfg.baml.timeout_ms or 60000,
+		timeout = endpoint_cfg.timeout_ms,
 	})
 
 	if not ok or not response then
-		return nil, "BAML request failed: " .. tostring(response or "no response")
+		return nil, "Request failed: " .. tostring(response or "no response")
 	end
 
 	if response.status ~= 200 then
 		local body = response.body or "<no body>"
-		return nil, string.format("BAML request failed (%s): %s", tostring(response.status), body)
+		return nil, string.format("Request failed (%s): %s", tostring(response.status), body)
 	end
 
 	return unwrap_body(response.body), nil

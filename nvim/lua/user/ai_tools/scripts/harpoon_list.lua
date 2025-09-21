@@ -1,5 +1,3 @@
--- NOTE: Still uses your formatter; we’ll simplify templates later.
-local async = require("plenary.async")
 local utils = require("user.ai_tools.utils")
 local logger = require("user.ai_tools.logger")
 local ui = require("user.ai_tools.ui")
@@ -66,7 +64,7 @@ function M.execute()
 
 		local final = (cfg.system_prefix or "") .. "\n\n### GOAL\n" .. goal .. "\n\n### FILES\n" .. files_block
 
-		local response, err = baml.send(final)
+		local response, err = baml.send("chat", final)
 		if err then
 			vim.notify("BAML error: " .. err, vim.log.levels.ERROR)
 			return

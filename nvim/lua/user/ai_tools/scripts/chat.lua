@@ -18,7 +18,7 @@ function M.execute()
 			return
 		end
 
-		local response, err = baml.send(prompt)
+		local response, err = baml.send("chat", prompt)
 		if err then
 			vim.notify("BAML error: " .. err, vim.log.levels.ERROR)
 			return
